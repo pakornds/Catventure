@@ -1,0 +1,2 @@
+0 = normal chair
+1 = normal bed
