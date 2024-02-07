@@ -1,5 +1,6 @@
-public class GameManager {
+package Main;
 
+public class GameManager {
     // send game manager to create action handler
     ActionHandler aHandler = new ActionHandler(this);
     // send game manager to create UI of the game
