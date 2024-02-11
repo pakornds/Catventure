@@ -2,12 +2,17 @@ package Main;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
@@ -15,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
+import java.awt.Dimension;
 
 public class UI {
     GameManager game;
@@ -29,8 +35,17 @@ public class UI {
     public JPanel bgPanel[] = new JPanel[10];
     public JLabel bgLabel[] = new JLabel[10];
 
+    // player's ui
+    JPanel lifePanel;
+    JLabel lifeLabel[] = new JLabel[6];
+    JPanel inventoryPanel;
+    private int MAX_ITEMS = 6;
+    private int itemCount;
+    JLabel itemLabel[] = new JLabel[MAX_ITEMS];
+
     // ArrayList of objects to display or hide
     public ArrayList<JLabel> objectList = new ArrayList<>();
+    protected HashMap<String, Boolean> firstInteractionMap = new HashMap<>();
 
     public UI(GameManager game) {
 
@@ -39,11 +54,16 @@ public class UI {
         createMainField();
         createTextBox();
 
-        generateScreen();
+        createLifeField();
+        createInventoryField();
+        generateScene();
         // closeTextBox();
         // openTextBox();
 
         window.setVisible(true);
+    }
+
+    public UI() {
     }
 
     // create the main game's windows
@@ -85,13 +105,14 @@ public class UI {
 
             @Override
             public void mouseClicked(MouseEvent e) {
+                if (SwingUtilities.isLeftMouseButton(e)) {
+                    closeTextBox();
+                }
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
-                if (SwingUtilities.isLeftMouseButton(e)) {
-                    closeTextBox();
-                }
+
             }
 
             @Override
@@ -145,11 +166,13 @@ public class UI {
         menuItem[0] = new JMenuItem(choiceName1);
         menuItem[0].addActionListener(game.aHandler);
         menuItem[0].setActionCommand(choiceCommand1);
+        firstInteractionMap.put(choiceCommand1, true);
         popMenu.add(menuItem[0]);
 
         menuItem[1] = new JMenuItem(choiceName2);
         menuItem[1].addActionListener(game.aHandler);
         menuItem[1].setActionCommand(choiceCommand2);
+        firstInteractionMap.put(choiceCommand2, true);
         popMenu.add(menuItem[1]);
 
         menuItem[2] = new JMenuItem(choiceName3);
@@ -196,7 +219,7 @@ public class UI {
 
         // put the object wanting to overwritten in the bottom
         bgPanel[bgNum].add(objLabel);
-        bgPanel[bgNum].add(bgLabel[bgNum]);
+
     }
 
     // New method to show the specified object
@@ -211,14 +234,114 @@ public class UI {
         obj.setVisible(false);
     }
 
-    // send variables from bg to obj
-    public void generateScreen() {
+    public void createChangeMapBtn(int bgNum, int x, int y, int width, int height, String command,
+            String arrowFilename) {
+        ImageIcon arrowIcon = new ImageIcon(getClass().getClassLoader().getResource(arrowFilename));
 
-        // SCREEN1
+        JButton arrowButton = new JButton();
+        arrowButton.setBounds(x, y, width, height);
+        arrowButton.setBackground(null);
+        arrowButton.setContentAreaFilled(false);
+        arrowButton.setFocusPainted(false);
+        arrowButton.setIcon(arrowIcon);
+        arrowButton.addActionListener(game.aHandler);
+        arrowButton.setActionCommand(command);
+        arrowButton.setBorderPainted(false);
+
+        bgPanel[bgNum].add(arrowButton);
+    }
+
+    public void createLifeField() {
+        lifePanel = new JPanel();
+        lifePanel.setBounds(30, 0, 400, 100);
+        lifePanel.setLayout(new GridLayout(1, 6));
+        lifePanel.setOpaque(false);
+        window.add(lifePanel);
+
+        ImageIcon lifeIcon = new ImageIcon(getClass().getClassLoader().getResource("resources\\heart.png"));
+        Image image = lifeIcon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+        lifeIcon = new ImageIcon(image);
+
+        int i = 0;
+        while (i < 6) {
+            lifeLabel[i] = new JLabel();
+            lifeLabel[i].setIcon(lifeIcon);
+            lifePanel.add(lifeLabel[i]);
+            i++;
+        }
+
+    }
+
+    public void createInventoryField() {
+        inventoryPanel = new JPanel();
+        inventoryPanel.setBounds(1470, 20, 400, 50);
+        inventoryPanel.setLayout(new GridLayout(1, 6));
+        lifePanel.setOpaque(false);
+
+        window.add(inventoryPanel);
+    }
+
+    public void createInventoryItem(int idx, String itemFileLocation) {
+        itemLabel[idx] = new JLabel();
+        ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource(itemFileLocation));
+        Image image = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+        icon = new ImageIcon(image);
+        itemLabel[idx].setIcon(icon);
+        inventoryPanel.add(itemLabel[idx]);
+    }
+
+    public void storeItem() {
+        if (itemCount < MAX_ITEMS) {
+            itemCount++;
+            System.out.println("Stored item, Total items: " + itemCount);
+        } else {
+            System.out.println("Store is full, cannot store more items");
+        }
+    }
+
+    public void discardItem() {
+        if (itemCount > 0) {
+            itemCount--;
+            System.out.println("Discarded item, Total items : " + itemCount);
+        } else {
+            System.out.println("Store is empty, no items to discard");
+        }
+    }
+
+    public int getItemCount() {
+        return itemCount;
+    }
+
+    // send variables from bg to obj
+    public void generateScene() {
+
+        // SCENE 0
+
         createBackground(0, "resources\\Bedroom\\TheBedroom.png");
-        createObject(0, 550, 380, 400, 400, "resources\\Bedroom\\chair.png", "Look", "Cancel", "", "lookChair",
-                "cancel", "");
-        createObject(0, 1050, 210, 900, 900, "resources\\Bedroom\\Bed.png", "Look", "Cancel", "", "lookBed",
-                "cancel", "");
+        createChangeMapBtn(0, 0, 450, 100, 100, "goScene1", "resources\\arrowLeft.png");
+        createObject(0, 550, 380, 400, 400, "resources\\Bedroom\\movedChair.png", "Look", "Move", "Cancel",
+                "lookMovedChair",
+                "moveMovedChair", "cancel");
+        hideObject(0);
+        createObject(0, 550, 380, 400, 400, "resources\\Bedroom\\chair.png", "Look", "Move", "Cancel", "lookChair",
+                "moveChair", "cancel");
+        createObject(0, 1050, 210, 900, 900, "resources\\Bedroom\\movedBed.png", "Look", "Move", "Cancel",
+                "lookMovedBed",
+                "moveMovedSheet", "cancel");
+        hideObject(2);
+        createObject(0, 1050, 210, 900, 900, "resources\\Bedroom\\Bed.png", "Look", "Move", "Cancel", "lookBed",
+                "moveSheet", "cancel");
+        bgPanel[0].add(bgLabel[0]);
+
+        // SCENE 1
+
+        createBackground(1, "resources\\Bedroom\\TheBedroom.png");
+        createChangeMapBtn(1, 0, 450, 100, 100, "goScene/", "resources\\arrowLeft.png");
+        createChangeMapBtn(1, 1800, 450, 100, 100, "goScene0", "resources\\arrowRight.png");
+        createObject(1, 550, 380, 400, 400, "resources\\Bedroom\\chair.png", "Look", "Move", "Cancel", "lookChair",
+                "moveChair", "cancel");
+        createObject(1, 1050, 210, 900, 900, "resources\\Bedroom\\Bed.png", "Look", "Move", "Cancel", "lookBed",
+                "moveSheet", "cancel");
+        bgPanel[1].add(bgLabel[1]);
     }
 }

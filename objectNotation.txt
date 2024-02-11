@@ -1,2 +1,4 @@
-0 = normal chair
-1 = normal bed
+0 = moved chair
+1 = normal chair
+2 = moved bed
+3 = normal bed
