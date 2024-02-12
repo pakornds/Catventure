@@ -37,7 +37,6 @@ public class UI {
     JPanel lifePanel;
     public ArrayList<JLabel> lifeLabel = new ArrayList<>();
     public int playerMaxAction = 10;
-    public int playerAction = playerMaxAction;
     JPanel inventoryPanel;
     private int MAX_ITEMS = 6;
     private int itemCount;
@@ -79,7 +78,7 @@ public class UI {
 
     public void createTextBox() {
         messageText = new JTextArea(
-                "เป้าหมายของเกมนี้คือการกดสิ่งของต่างๆ เพื่อเก็บหาเบาะแสและรวมเพื่อไปตามหาแมวที่หนีจากบ้านเราไป");
+                "เป้าหมายของเกมนี้คือการกดสิ่งของต่างๆ เพื่อเก็บหาเบาะแสและรวมเพื่อไปตามหาแมวที่หนีจากบ้านเราไป โดยเมื่อกดของบางอย่างก็จะมีให้เลือกว่าจะทำอะไรกับสิ่งของนั้นโดยจะเป็นการเสีย 1 action รวมถึงการเปลี่ยนแมพด้วย มีแค่ Cancel ที่จะไม่เสียอะไร ดังนั้นคิดให้ดีก่อนจะกดอะไร");
         messageText.setBounds(175, 800, 1600, 220);
         messageText.setBackground(new Color(0, 0, 0, 100));
 
@@ -105,14 +104,14 @@ public class UI {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (SwingUtilities.isLeftMouseButton(e)) {
-                    closeTextBox();
-                }
+
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
-
+                if (SwingUtilities.isLeftMouseButton(e)) {
+                    closeTextBox();
+                }
             }
 
             @Override
@@ -132,10 +131,12 @@ public class UI {
 
     public void closeTextBox() {
         messageText.setVisible(false);
+        messageText.repaint();
     }
 
     public void openTextBox() {
         messageText.setVisible(true);
+        messageText.repaint();
     }
 
     public void createBackground(int bgNum, String bgFileLocation) {
@@ -226,12 +227,14 @@ public class UI {
     public void showObject(int i) {
         JLabel obj = objectList.get(i);
         obj.setVisible(true);
+        obj.repaint();
     }
 
     // New method to hide the specified object
     public void hideObject(int i) {
         JLabel obj = objectList.get(i);
         obj.setVisible(false);
+        obj.repaint();
     }
 
     public void createChangeMapBtn(int bgNum, int x, int y, int width, int height, String command,

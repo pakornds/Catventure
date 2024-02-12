@@ -39,6 +39,8 @@ public class ActionHandler extends UI implements ActionListener {
                     game.ui.createInventoryItem(itemIdx, "resources\\heart.png");
                     game.player.hasScratchMark = true;
                     itemIdx++;
+                    game.player.playerAction--;
+                    game.player.updatePlayerStatus();
                 } else {
                     game.ev01.nothingHere();
                 }
@@ -48,10 +50,10 @@ public class ActionHandler extends UI implements ActionListener {
                 break;
             case "moveSheet":
                 if (isFirstInteraction(yourChoice)) {
-                    game.ev01.moveSheet();
                     game.ui.createInventoryItem(itemIdx, "resources\\heart.png");
-                    game.player.hasCatHair = true;
                     itemIdx++;
+                    game.ev01.moveSheet();
+
                 } else {
                     game.ev01.nothingHere();
                 }

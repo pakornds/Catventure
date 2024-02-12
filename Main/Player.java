@@ -10,12 +10,12 @@ public class Player {
     public boolean hasScratchMark;
 
     public Player(GameManager game) {
-
+        this.game = game;
     }
 
     public void setPlayerDefaultStatus() {
         playerMaxAction = game.ui.playerMaxAction;
-        playerAction = game.ui.playerMaxAction;
+        playerAction = playerMaxAction;
 
         hasCatHair = false;
         hasScratchMark = false;
@@ -27,6 +27,7 @@ public class Player {
         int i = 0;
         while (i < playerMaxAction) {
             game.ui.lifeLabel.get(i).setVisible(false);
+            i++;
         }
 
         int actionCount = playerAction - 1;

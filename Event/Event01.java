@@ -13,6 +13,7 @@ public class Event01 {
     public void lookChair() {
         game.ui.messageText.setText("เจอรอยข่วนแมว");
         game.ui.openTextBox();
+        game.ui.messageText.repaint();
     }
 
     public void moveChair() {
@@ -21,8 +22,13 @@ public class Event01 {
     }
 
     public void moveSheet() {
+
+        game.player.hasCatHair = true;
+        game.player.playerAction--;
+        game.player.updatePlayerStatus();
         game.ui.messageText.setText("เจอขนแมว");
         game.ui.openTextBox();
+        game.ui.messageText.repaint();
         game.ui.hideObject(3);
         game.ui.showObject(2);
     }
@@ -40,10 +46,12 @@ public class Event01 {
     public void cancel() {
         game.ui.messageText.setText("ไม่ดูให้ครบก่อนหรอ");
         game.ui.openTextBox();
+        game.ui.messageText.repaint();
     }
 
     public void nothingHere() {
         game.ui.messageText.setText("ไม่มีอะไรตรงนี้");
         game.ui.openTextBox();
+        game.ui.messageText.repaint();
     }
 }
