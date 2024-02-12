@@ -29,69 +29,74 @@ public class ActionHandler extends UI implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String yourChoice = e.getActionCommand();
         System.out.println(yourChoice);
-        switch (yourChoice) {
-            case "cancel":
-                game.ev01.cancel();
-                break;
-            case "lookChair":
-                if (isFirstInteraction(yourChoice)) {
-                    game.ev01.lookChair();
-                    game.ui.createInventoryItem(itemIdx, "resources\\heart.png");
-                    game.player.hasScratchMark = true;
-                    itemIdx++;
-                    game.player.playerAction--;
-                    game.player.updatePlayerStatus();
-                } else {
+        try {
+            switch (yourChoice) {
+                case "cancel":
+                    game.ev01.cancel();
+                    game.player.playerAction++;
+                    break;
+                case "lookChair":
+                    if (isFirstInteraction(yourChoice)) {
+                        game.ev01.lookChair();
+                        game.ui.createInventoryItem(itemIdx, "resources\\heart.png");
+                        game.player.hasScratchMark = true;
+                        itemIdx++;
+                    } else {
+                        game.ev01.nothingHere();
+                    }
+                    break;
+                case "lookBed":
                     game.ev01.nothingHere();
-                }
-                break;
-            case "lookBed":
-                game.ev01.nothingHere();
-                break;
-            case "moveSheet":
-                if (isFirstInteraction(yourChoice)) {
-                    game.ui.createInventoryItem(itemIdx, "resources\\heart.png");
-                    itemIdx++;
-                    game.ev01.moveSheet();
+                    break;
+                case "moveSheet":
+                    if (isFirstInteraction(yourChoice)) {
+                        game.ui.createInventoryItem(itemIdx, "resources\\heart.png");
+                        itemIdx++;
+                        game.ev01.moveSheet();
 
-                } else {
+                    } else {
+                        game.ev01.nothingHere();
+                    }
+                    break;
+                case "moveChair":
+                    game.ev01.moveChair();
                     game.ev01.nothingHere();
-                }
-                break;
-            case "moveChair":
-                game.ev01.moveChair();
-                game.ev01.nothingHere();
-                break;
-            case "lookCat":
-                if (game.player.hasCatHair && game.player.hasScratchMark) {
-                    game.ev03.lookCatSure();
-                } else if (game.player.hasCatHair || game.player.hasScratchMark) {
-                    game.ev03.lookCatNotSure();
-                } else {
-                    game.ev03.lookNUHUH();
-                }
-                break;
-            case "touchCat":
-                if (game.player.hasCatHair && game.player.hasScratchMark) {
-                    game.ev03.touchCatSure();
-                } else if (game.player.hasCatHair || game.player.hasScratchMark) {
-                    game.ev03.touchCatNotSure();
-                } else {
-                    game.ev03.touchNUHUH();
-                }
-                break;
+                    break;
+                case "lookCat":
+                    if (game.player.hasCatHair && game.player.hasScratchMark) {
+                        game.ev03.lookCatSure();
+                    } else if (game.player.hasCatHair || game.player.hasScratchMark) {
+                        game.ev03.lookCatNotSure();
+                    } else {
+                        game.ev03.lookNUHUH();
+                    }
+                    break;
+                case "touchCat":
+                    if (game.player.hasCatHair && game.player.hasScratchMark) {
+                        game.ev03.touchCatSure();
+                    } else if (game.player.hasCatHair || game.player.hasScratchMark) {
+                        game.ev03.touchCatNotSure();
+                    } else {
+                        game.ev03.touchNUHUH();
+                    }
+                    break;
 
-            // change scene
-            case "goScene0":
-                game.sceneChanger.showScene0();
-                break;
-            case "goScene1":
-                game.sceneChanger.showScene1();
-                break;
-            case "goScene2":
-                game.sceneChanger.showScene2();
-                break;
+                // change scene
+                case "goScene0":
+                    game.sceneChanger.showScene0();
+                    break;
+                case "goScene1":
+                    game.sceneChanger.showScene1();
+                    break;
+                case "goScene2":
+                    game.sceneChanger.showScene2();
+                    break;
+            }
+        } finally {
+            game.player.playerAction--;
+            game.player.updatePlayerStatus();
         }
+
     }
 
 }
