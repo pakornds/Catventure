@@ -1,8 +1,10 @@
 package Main;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.MouseEvent;
@@ -27,6 +29,7 @@ public class UI {
     JFrame window;
 
     // game's text
+    public JPanel textBoxPanel;
     public JTextArea messageText;
 
     // game's backgrounds
@@ -77,18 +80,29 @@ public class UI {
     }
 
     public void createTextBox() {
+        textBoxPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Draw a transparent background
+                g.setColor(new Color(255, 253, 208, 100));
+                g.fillRect(0, 0, getWidth(), getHeight());
+            }
+        };
+        textBoxPanel.setLayout(new BorderLayout());
+
         messageText = new JTextArea(
                 "เป้าหมายของเกมนี้คือการกดสิ่งของต่างๆ เพื่อเก็บหาเบาะแสและรวมเพื่อไปตามหาแมวที่หนีจากบ้านเราไป โดยเมื่อกดของบางอย่างก็จะมีให้เลือกว่าจะทำอะไรกับสิ่งของนั้นโดยจะเป็นการเสีย 1 action รวมถึงการเปลี่ยนแมพด้วย มีแค่ Cancel ที่จะไม่เสียอะไร ดังนั้นคิดให้ดีก่อนจะกดอะไร");
-        messageText.setBounds(175, 800, 1600, 220);
-        messageText.setBackground(new Color(0, 0, 0, 100));
 
         Insets margins = new Insets(40, 40, 40, 40);
 
         // Set margins to move the text inside the JTextArea
         messageText.setMargin(margins);
 
+        messageText.setOpaque(false);
+
         // text color
-        messageText.setForeground(Color.white);
+        messageText.setForeground(Color.black);
 
         // only use for displaying text
         messageText.setEditable(false);
@@ -97,21 +111,23 @@ public class UI {
         messageText.setLineWrap(true);
         messageText.setWrapStyleWord(true);
         messageText.setFont(new Font("Layiji MaHaNiYom V1.61", Font.PLAIN, 36));
-        window.getContentPane().add(messageText);
+        textBoxPanel.add(messageText);
+        textBoxPanel.setBounds(175, 800, 1600, 220);
+        window.getContentPane().add(textBoxPanel);
         window.revalidate();
         window.repaint();
         messageText.addMouseListener(new MouseListener() {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-
+                if (SwingUtilities.isLeftMouseButton(e)) {
+                    closeTextBox();
+                }
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
-                if (SwingUtilities.isLeftMouseButton(e)) {
-                    closeTextBox();
-                }
+
             }
 
             @Override
@@ -130,13 +146,13 @@ public class UI {
     }
 
     public void closeTextBox() {
-        messageText.setVisible(false);
-        messageText.repaint();
+        textBoxPanel.setVisible(false);
+        window.repaint();
     }
 
     public void openTextBox() {
-        messageText.setVisible(true);
-        messageText.repaint();
+        textBoxPanel.setVisible(true);
+        window.repaint();
     }
 
     public void createBackground(int bgNum, String bgFileLocation) {

@@ -21,6 +21,5 @@ public class GameManager {
 
     public GameManager() {
         player.setPlayerDefaultStatus();
-        sceneChanger.showScene0();
     }
 }
