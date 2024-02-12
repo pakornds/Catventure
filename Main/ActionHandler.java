@@ -37,6 +37,7 @@ public class ActionHandler extends UI implements ActionListener {
                 if (isFirstInteraction(yourChoice)) {
                     game.ev01.lookChair();
                     game.ui.createInventoryItem(itemIdx, "resources\\heart.png");
+                    game.player.hasScratchMark = true;
                     itemIdx++;
                 } else {
                     game.ev01.nothingHere();
@@ -49,6 +50,7 @@ public class ActionHandler extends UI implements ActionListener {
                 if (isFirstInteraction(yourChoice)) {
                     game.ev01.moveSheet();
                     game.ui.createInventoryItem(itemIdx, "resources\\heart.png");
+                    game.player.hasCatHair = true;
                     itemIdx++;
                 } else {
                     game.ev01.nothingHere();
@@ -58,6 +60,24 @@ public class ActionHandler extends UI implements ActionListener {
                 game.ev01.moveChair();
                 game.ev01.nothingHere();
                 break;
+            case "lookCat":
+                if (game.player.hasCatHair && game.player.hasScratchMark) {
+                    game.ev03.lookCatSure();
+                } else if (game.player.hasCatHair || game.player.hasScratchMark) {
+                    game.ev03.lookCatNotSure();
+                } else {
+                    game.ev03.lookNUHUH();
+                }
+                break;
+            case "touchCat":
+                if (game.player.hasCatHair && game.player.hasScratchMark) {
+                    game.ev03.touchCatSure();
+                } else if (game.player.hasCatHair || game.player.hasScratchMark) {
+                    game.ev03.touchCatNotSure();
+                } else {
+                    game.ev03.touchNUHUH();
+                }
+                break;
 
             // change scene
             case "goScene0":
@@ -65,6 +85,9 @@ public class ActionHandler extends UI implements ActionListener {
                 break;
             case "goScene1":
                 game.sceneChanger.showScene1();
+                break;
+            case "goScene2":
+                game.sceneChanger.showScene2();
                 break;
         }
     }

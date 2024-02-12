@@ -1,15 +1,14 @@
 package Main;
 
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,7 +19,6 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
-import java.awt.Dimension;
 
 public class UI {
     GameManager game;
@@ -37,7 +35,9 @@ public class UI {
 
     // player's ui
     JPanel lifePanel;
-    JLabel lifeLabel[] = new JLabel[6];
+    public ArrayList<JLabel> lifeLabel = new ArrayList<>();
+    public int playerMaxAction = 10;
+    public int playerAction = playerMaxAction;
     JPanel inventoryPanel;
     private int MAX_ITEMS = 6;
     private int itemCount;
@@ -252,9 +252,13 @@ public class UI {
     }
 
     public void createLifeField() {
+        int LIFE_PANEL_X = 30;
+        int LIFE_PANEL_Y = 15;
+        int LIFE_PANEL_WIDTH = 400;
+        int LIFE_PANEL_HEIGHT = 200;
         lifePanel = new JPanel();
-        lifePanel.setBounds(30, 0, 400, 100);
-        lifePanel.setLayout(new GridLayout(1, 6));
+        lifePanel.setBounds(LIFE_PANEL_X, LIFE_PANEL_Y, LIFE_PANEL_WIDTH, LIFE_PANEL_HEIGHT);
+        lifePanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
         lifePanel.setOpaque(false);
         window.add(lifePanel);
 
@@ -263,20 +267,24 @@ public class UI {
         lifeIcon = new ImageIcon(image);
 
         int i = 0;
-        while (i < 6) {
-            lifeLabel[i] = new JLabel();
-            lifeLabel[i].setIcon(lifeIcon);
-            lifePanel.add(lifeLabel[i]);
+        while (i < playerMaxAction) {
+            lifeLabel.add(new JLabel());
+            lifeLabel.get(i).setIcon(lifeIcon);
+            lifePanel.add(lifeLabel.get(i));
             i++;
         }
 
     }
 
     public void createInventoryField() {
+        int INVENTORY_PANEL_X = 1470;
+        int INVENTORY_PANEL_Y = 15;
+        int INVENTORY_PANEL_WIDTH = 400;
+        int INVENTORY_PANEL_HEIGHT = 50;
         inventoryPanel = new JPanel();
-        inventoryPanel.setBounds(1470, 20, 400, 50);
-        inventoryPanel.setLayout(new GridLayout(1, 6));
-        lifePanel.setOpaque(false);
+        inventoryPanel.setBounds(INVENTORY_PANEL_X, INVENTORY_PANEL_Y, INVENTORY_PANEL_WIDTH, INVENTORY_PANEL_HEIGHT);
+        inventoryPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 0));
+        inventoryPanel.setOpaque(false);
 
         window.add(inventoryPanel);
     }
@@ -319,29 +327,39 @@ public class UI {
 
         createBackground(0, "resources\\Bedroom\\TheBedroom.png");
         createChangeMapBtn(0, 0, 450, 100, 100, "goScene1", "resources\\arrowLeft.png");
-        createObject(0, 550, 380, 400, 400, "resources\\Bedroom\\movedChair.png", "Look", "Move", "Cancel",
+        createObject(0, 550, 380, 350, 400, "resources\\Bedroom\\movedChair.png", "Look", "Move", "Cancel",
                 "lookMovedChair",
                 "moveMovedChair", "cancel");
         hideObject(0);
         createObject(0, 550, 380, 400, 400, "resources\\Bedroom\\chair.png", "Look", "Move", "Cancel", "lookChair",
                 "moveChair", "cancel");
-        createObject(0, 1050, 210, 900, 900, "resources\\Bedroom\\movedBed.png", "Look", "Move", "Cancel",
+        createObject(0, 1050, 210, 900, 600, "resources\\Bedroom\\movedBed.png", "Look", "Move", "Cancel",
                 "lookMovedBed",
                 "moveMovedSheet", "cancel");
         hideObject(2);
-        createObject(0, 1050, 210, 900, 900, "resources\\Bedroom\\Bed.png", "Look", "Move", "Cancel", "lookBed",
+        createObject(0, 1050, 210, 900, 600, "resources\\Bedroom\\Bed.png", "Look", "Move", "Cancel", "lookBed",
                 "moveSheet", "cancel");
         bgPanel[0].add(bgLabel[0]);
 
         // SCENE 1
 
         createBackground(1, "resources\\Bedroom\\TheBedroom.png");
-        createChangeMapBtn(1, 0, 450, 100, 100, "goScene/", "resources\\arrowLeft.png");
+        createChangeMapBtn(1, 0, 450, 100, 100, "goScene2", "resources\\arrowLeft.png");
         createChangeMapBtn(1, 1800, 450, 100, 100, "goScene0", "resources\\arrowRight.png");
         createObject(1, 550, 380, 400, 400, "resources\\Bedroom\\chair.png", "Look", "Move", "Cancel", "lookChair",
                 "moveChair", "cancel");
         createObject(1, 1050, 210, 900, 900, "resources\\Bedroom\\Bed.png", "Look", "Move", "Cancel", "lookBed",
                 "moveSheet", "cancel");
         bgPanel[1].add(bgLabel[1]);
+
+        // SCENE 2
+        createBackground(2, "resources\\Neighborhood\\Background.png");
+        createChangeMapBtn(2, 1800, 450, 100, 100, "goScene1",
+                "resources\\arrowRight.png");
+        createObject(
+                2, 550, 380, 500, 500, "resources\\Neighborhood\\Cat.png", "Look", "Touch",
+                "Cancel", "lookCat",
+                "touchCat", "cancel");
+        bgPanel[2].add(bgLabel[2]);
     }
 }

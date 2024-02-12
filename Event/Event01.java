@@ -27,6 +27,16 @@ public class Event01 {
         game.ui.showObject(2);
     }
 
+    public void moveMovedChair() {
+        game.ui.hideObject(0);
+        game.ui.showObject(1);
+    }
+
+    public void moveMovedSheet() {
+        game.ui.hideObject(2);
+        game.ui.showObject(3);
+    }
+
     public void cancel() {
         game.ui.messageText.setText("ไม่ดูให้ครบก่อนหรอ");
         game.ui.openTextBox();
