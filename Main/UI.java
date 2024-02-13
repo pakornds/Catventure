@@ -6,8 +6,6 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -40,8 +38,8 @@ public class UI {
     public JTextArea messageText;
 
     // game's backgrounds
-    public JPanel bgPanel[] = new JPanel[10];
-    public JLabel bgLabel[] = new JLabel[10];
+    public JPanel bgPanel[] = new JPanel[15];
+    public JLabel bgLabel[] = new JLabel[15];
 
     // player's ui
     JPanel lifePanel;
@@ -49,7 +47,6 @@ public class UI {
     public int playerMaxAction = 10;
     JPanel inventoryPanel;
     private int MAX_ITEMS = 6;
-    private int itemCount;
     JLabel itemLabel[] = new JLabel[MAX_ITEMS];
 
     // ArrayList of objects to display or hide
@@ -453,11 +450,5 @@ public class UI {
                 "touchCat", "cancel");
         bgPanel[2].add(bgLabel[2]);
         bgPanel[2].setVisible(false);
-
-        // SCENE 3 / White scene
-        createBackground(3,
-                "resources\\1920x1080-all-solid-color-backgrounds\\1920x1080-alice-blue-solid-color-background.jpg");
-        bgPanel[3].add(bgLabel[3]);
-        bgPanel[3].setVisible(false);
     }
 }

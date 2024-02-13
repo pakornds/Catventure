@@ -1,6 +1,9 @@
 package Main;
 
-import javax.swing.SwingUtilities;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.Timer;
 
 public class SceneChanger {
     GameManager game;
@@ -47,13 +50,46 @@ public class SceneChanger {
         game.ui.bgPanel[2].setVisible(true);
         game.ui.messageText.setText("คุณตามหาน้องแมวช้าเกินไป!");
         game.ui.openTextBox();
-        SwingUtilities.invokeLater(() -> {
-            try {
-                Thread.sleep(3000); // 3 seconds delay
-                System.exit(0);
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
+
+        Timer timer = new Timer(3000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                game.ui.closeTextBox();
+                showScene0();
             }
         });
+
+        timer.setRepeats(false);
+        timer.start();
+
+        Timer timer2 = new Timer(5000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showScene1();
+            }
+        });
+
+        timer2.setRepeats(false);
+        timer2.start();
+
+        Timer timer3 = new Timer(5000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showScene2();
+            }
+        });
+
+        timer3.setRepeats(false);
+        timer3.start();
+
+        Timer timer4 = new Timer(5000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
+        timer4.setRepeats(false);
+        timer4.start();
     }
 }
