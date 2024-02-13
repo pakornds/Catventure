@@ -1,4 +1,4 @@
-fix object being everywhere
+fix object being everywhere (?)
 adding obj
 adding action handling
 change icon

@@ -31,6 +31,9 @@ public class Player {
         }
 
         int actionCount = playerAction - 1;
+        if (actionCount < 0) {
+            game.sceneChanger.showGameoverScene();
+        }
         while (actionCount >= 0) {
             game.ui.lifeLabel.get(actionCount).setVisible(true);
             actionCount--;

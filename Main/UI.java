@@ -1,25 +1,32 @@
 package Main;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
 import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextArea;
+import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 
 public class UI {
@@ -76,30 +83,56 @@ public class UI {
         window.getContentPane().setBackground(Color.BLACK);
         window.setLayout(null);
         window.setResizable(false);
+        window.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        window.setUndecorated(true);
 
+        // Add KeyListener to the JFrame
+        // Register Escape key globally
+        InputMap inputMap = window.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        inputMap.put(KeyStroke.getKeyStroke("ESCAPE"), "escapeKey");
+        window.getRootPane().getActionMap().put("escapeKey", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showExitConfirmationDialog();
+            }
+        });
+    }
+
+    // Show a more visually appealing exit confirmation dialog
+    private void showExitConfirmationDialog() {
+        ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource("resources\\CatFoot.png"));
+        Image image = icon.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
+        icon = new ImageIcon(image);
+        String message = "This game wonn't save your progress!";
+        String title = "Exit Confirmation";
+
+        int result = JOptionPane.showOptionDialog(
+                window,
+                message,
+                title,
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                icon,
+                new Object[] { "Yes, exit", "No, cancel" },
+                "No, cancel");
+
+        if (result == JOptionPane.YES_OPTION) {
+            // If user chooses to exit, close the application
+            System.exit(0);
+        }
     }
 
     public void createTextBox() {
-        textBoxPanel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                // Draw a transparent background
-                g.setColor(new Color(255, 253, 208, 100));
-                g.fillRect(0, 0, getWidth(), getHeight());
-            }
-        };
-        textBoxPanel.setLayout(new BorderLayout());
 
         messageText = new JTextArea(
                 "เป้าหมายของเกมนี้คือการกดสิ่งของต่างๆ เพื่อเก็บหาเบาะแสและรวมเพื่อไปตามหาแมวที่หนีจากบ้านเราไป โดยเมื่อกดของบางอย่างก็จะมีให้เลือกว่าจะทำอะไรกับสิ่งของนั้นโดยจะเป็นการเสีย 1 action รวมถึงการเปลี่ยนแมพด้วย มีแค่ Cancel ที่จะไม่เสียอะไร ดังนั้นคิดให้ดีก่อนจะกดอะไร (กดที่กล่องข้อความเพื่อปิด)");
-
+        messageText.setLayout(new FlowLayout());
         Insets margins = new Insets(40, 40, 40, 40);
+        messageText.setBounds(175, 800, 1600, 220);
+        messageText.setBackground(new Color(255, 253, 208));
 
         // Set margins to move the text inside the JTextArea
         messageText.setMargin(margins);
-
-        messageText.setOpaque(false);
 
         // text color
         messageText.setForeground(Color.black);
@@ -111,9 +144,7 @@ public class UI {
         messageText.setLineWrap(true);
         messageText.setWrapStyleWord(true);
         messageText.setFont(new Font("Layiji MaHaNiYom V1.61", Font.PLAIN, 36));
-        textBoxPanel.add(messageText);
-        textBoxPanel.setBounds(175, 800, 1600, 220);
-        window.getContentPane().add(textBoxPanel);
+        window.getContentPane().add(messageText);
         window.revalidate();
         window.repaint();
         messageText.addMouseListener(new MouseListener() {
@@ -146,12 +177,12 @@ public class UI {
     }
 
     public void closeTextBox() {
-        textBoxPanel.setVisible(false);
+        messageText.setVisible(false);
         window.repaint();
     }
 
     public void openTextBox() {
-        textBoxPanel.setVisible(true);
+        messageText.setVisible(true);
         window.repaint();
     }
 
@@ -244,14 +275,14 @@ public class UI {
     public void showObject(int i) {
         JLabel obj = objectList.get(i);
         obj.setVisible(true);
-        obj.repaint();
+        window.repaint();
     }
 
     // New method to hide the specified object
     public void hideObject(int i) {
         JLabel obj = objectList.get(i);
         obj.setVisible(false);
-        obj.repaint();
+        window.repaint();
     }
 
     public void createChangeMapBtn(int bgNum, int x, int y, int width, int height, String command,
@@ -283,7 +314,7 @@ public class UI {
         window.add(lifePanel);
 
         ImageIcon lifeIcon = new ImageIcon(getClass().getClassLoader().getResource("resources\\heart.png"));
-        Image image = lifeIcon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+        Image image = lifeIcon.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
         lifeIcon = new ImageIcon(image);
 
         int i = 0;
@@ -303,41 +334,80 @@ public class UI {
         int INVENTORY_PANEL_HEIGHT = 50;
         inventoryPanel = new JPanel();
         inventoryPanel.setBounds(INVENTORY_PANEL_X, INVENTORY_PANEL_Y, INVENTORY_PANEL_WIDTH, INVENTORY_PANEL_HEIGHT);
-        inventoryPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 0));
+        inventoryPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 0));
         inventoryPanel.setOpaque(false);
 
         window.add(inventoryPanel);
     }
 
-    public void createInventoryItem(int idx, String itemFileLocation) {
+    public void createInventoryItem(int idx, String itemFileLocation, int bgNum) {
         itemLabel[idx] = new JLabel();
         ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource(itemFileLocation));
         Image image = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
         icon = new ImageIcon(image);
         itemLabel[idx].setIcon(icon);
         inventoryPanel.add(itemLabel[idx]);
+        showItemCenter(idx, itemFileLocation, bgNum);
     }
 
-    public void storeItem() {
-        if (itemCount < MAX_ITEMS) {
-            itemCount++;
-            System.out.println("Stored item, Total items: " + itemCount);
-        } else {
-            System.out.println("Store is full, cannot store more items");
-        }
-    }
+    public void showItemCenter(int idx, String itemFileLocation, int bgNum) {
+        closeTextBox();
+        game.ui.bgPanel[bgNum].setVisible(false);
 
-    public void discardItem() {
-        if (itemCount > 0) {
-            itemCount--;
-            System.out.println("Discarded item, Total items : " + itemCount);
-        } else {
-            System.out.println("Store is empty, no items to discard");
-        }
-    }
+        // Create a new JDialog for the item popup
+        JDialog itemDialog = new JDialog(window);
 
-    public int getItemCount() {
-        return itemCount;
+        // Create a new JLabel for the item
+        JLabel itemLabel = new JLabel();
+
+        // Set the icon for the item
+        ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource(itemFileLocation));
+        itemLabel.setIcon(icon);
+
+        // Set the bounds for the item
+        itemLabel.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
+
+        // Add the item to the dialog
+        itemDialog.add(itemLabel);
+
+        // Add a mouse listener to close the dialog when clicked
+        itemLabel.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (SwingUtilities.isLeftMouseButton(e)) {
+                    // Close the dialog
+                    itemDialog.dispose();
+                    game.ui.bgPanel[bgNum].setVisible(true);
+                    closeTextBox();
+                }
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+
+        });
+
+        // Set dialog properties
+        itemDialog.setSize(icon.getIconWidth(), icon.getIconHeight());
+        itemDialog.setLocationRelativeTo(window);
+        itemDialog.setUndecorated(true);
+        itemDialog.setModal(true);
+        itemDialog.setVisible(true);
     }
 
     // send variables from bg to obj
@@ -368,9 +438,10 @@ public class UI {
         createChangeMapBtn(1, 1800, 450, 100, 100, "goScene0", "resources\\arrowRight.png");
         createObject(1, 550, 380, 400, 400, "resources\\Bedroom\\chair.png", "Look", "Move", "Cancel", "lookChair",
                 "moveChair", "cancel");
-        createObject(1, 1050, 210, 900, 900, "resources\\Bedroom\\Bed.png", "Look", "Move", "Cancel", "lookBed",
-                "moveSheet", "cancel");
+        createObject(1, 1050, 210, 900, 900, "resources\\Neighborhood\\Cat.png", "Look", "Move", "Cancel", "lookBed",
+                "moveShit", "cancel");
         bgPanel[1].add(bgLabel[1]);
+        bgPanel[1].setVisible(false);
 
         // SCENE 2
         createBackground(2, "resources\\Neighborhood\\Background.png");
@@ -381,5 +452,12 @@ public class UI {
                 "Cancel", "lookCat",
                 "touchCat", "cancel");
         bgPanel[2].add(bgLabel[2]);
+        bgPanel[2].setVisible(false);
+
+        // SCENE 3 / White scene
+        createBackground(3,
+                "resources\\1920x1080-all-solid-color-backgrounds\\1920x1080-alice-blue-solid-color-background.jpg");
+        bgPanel[3].add(bgLabel[3]);
+        bgPanel[3].setVisible(false);
     }
 }

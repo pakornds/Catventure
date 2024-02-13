@@ -12,6 +12,7 @@ public class Event01 {
 
     public void lookChair() {
         game.ui.messageText.setText("เจอรอยข่วนแมว");
+        game.player.hasScratchMark = true;
         game.ui.openTextBox();
         game.ui.messageText.repaint();
     }
@@ -24,7 +25,6 @@ public class Event01 {
     public void moveSheet() {
 
         game.player.hasCatHair = true;
-        game.player.playerAction--;
         game.player.updatePlayerStatus();
         game.ui.messageText.setText("เจอขนแมว");
         game.ui.openTextBox();
