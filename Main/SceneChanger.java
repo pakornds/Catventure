@@ -47,7 +47,7 @@ public class SceneChanger {
     public void showGameoverScene() {
         game.ui.bgPanel[0].setVisible(false);
         game.ui.bgPanel[1].setVisible(false);
-        game.ui.bgPanel[2].setVisible(true);
+        game.ui.bgPanel[2].setVisible(false);
         game.ui.messageText.setText("คุณตามหาน้องแมวช้าเกินไป!");
         game.ui.openTextBox();
 

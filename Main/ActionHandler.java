@@ -37,7 +37,7 @@ public class ActionHandler extends UI implements ActionListener {
                     break;
                 case "lookChair":
                     if (isFirstInteraction(yourChoice)) {
-                        game.ui.createInventoryItem(0, "resources\\Bedroom\\chair.png", 0);
+                        game.ui.createInventoryItem(itemIdx, "resources\\Items\\Scratching.png", 0);
                         game.ev01.lookChair();
                         itemIdx++;
 
@@ -50,7 +50,7 @@ public class ActionHandler extends UI implements ActionListener {
                     break;
                 case "moveSheet":
                     if (isFirstInteraction(yourChoice)) {
-                        game.ui.createInventoryItem(itemIdx, "resources\\heart.png", 0);
+                        game.ui.createInventoryItem(itemIdx, "resources\\Items\\Fur.png", 0);
                         itemIdx++;
                         game.ev01.moveSheet();
 

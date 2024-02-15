@@ -14,6 +14,7 @@ public class GameManager {
     public Event01 ev01 = new Event01(this);
     public Event03 ev03 = new Event03(this);
 
+    // Sound
     public static void main(String[] args) {
         // instantiate game manager
         new GameManager();

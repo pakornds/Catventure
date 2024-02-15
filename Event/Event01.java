@@ -29,8 +29,8 @@ public class Event01 {
         game.ui.messageText.setText("เจอขนแมว");
         game.ui.openTextBox();
         game.ui.messageText.repaint();
-        game.ui.hideObject(3);
-        game.ui.showObject(2);
+        game.ui.hideObject(9);
+        game.ui.showObject(8);
     }
 
     public void moveMovedChair() {
