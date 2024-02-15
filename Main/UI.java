@@ -4,12 +4,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Insets;
-import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
@@ -84,16 +81,14 @@ public class UI {
         public void createMainField() {
 
                 // Get the default toolkit and screen device
-                Toolkit toolkit = Toolkit.getDefaultToolkit();
+                // Toolkit toolkit = Toolkit.getDefaultToolkit();
+                // GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+                // GraphicsDevice gd = ge.getDefaultScreenDevice();
 
                 // Get the screen size with scaling taken into account
-                GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-                GraphicsDevice gd = ge.getDefaultScreenDevice();
-                GraphicsConfiguration gc = gd.getDefaultConfiguration();
-                Rectangle bounds = gc.getBounds();
-
-                int screenWidth = (int) bounds.getWidth();
-                int screenHeight = (int) bounds.getHeight();
+                Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                int screenWidth = (int) screenSize.getWidth();
+                int screenHeight = (int) screenSize.getHeight();
 
                 window = new JFrame();
                 window.setSize(screenWidth, screenHeight);
@@ -101,8 +96,8 @@ public class UI {
                 window.getContentPane().setBackground(Color.BLACK);
                 window.setLayout(null);
                 window.setResizable(false);
-                // window.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                // window.setUndecorated(true);
+                window.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                window.setUndecorated(true);
 
                 // Add KeyListener to the JFrame
                 // Register Escape key globally
@@ -143,7 +138,7 @@ public class UI {
         public void createTextBox() {
 
                 messageText = new JTextArea(
-                                "เป้าหมายของเกมนี้คือการกดสิ่งของต่างๆ เพื่อเก็บหาเบาะแสและรวมเพื่อไปตามหาแมวที่หนีจากบ้านเราไป โดยเมื่อกดของบางอย่างก็จะมีให้เลือกว่าจะทำอะไรกับสิ่งของนั้นและจะเสีย 1 action รวมถึงการเปลี่ยนแมพ (สามารถดูจำนวนการกดได้ที่ด้านซ้ายบน) Cancel จะไม่เสีย action และสามารถดูของที่อยู่ในตัวได้ที่มุมขวาบน (กดที่กล่องข้อความเพื่อปิด)");
+                                "(ตั้ง Display scale เป็น 100% !!)\nเป้าหมายของเกมนี้คือการกดสิ่งของต่างๆ เพื่อเก็บหาเบาะแสและรวมเพื่อไปตามหาแมวที่หนีจากบ้านเราไป โดยเมื่อกดของบางอย่างก็จะมีให้เลือกว่าจะทำอะไรกับสิ่งของนั้นและจะเสีย 1 action รวมถึงการเปลี่ยนแมพ (สามารถดูจำนวนการกดได้ที่ด้านซ้ายบน) Cancel จะไม่เสีย action และสามารถดูของที่อยู่ในตัวได้ที่มุมขวาบน (กดที่กล่องข้อความเพื่อปิด)");
                 messageText.setLayout(new FlowLayout());
                 Insets margins = new Insets(40, 40, 40, 40);
                 messageText.setBounds(175, 800, 1600, 220);
@@ -545,16 +540,16 @@ public class UI {
                                 "moveWindow2", "cancel");
 
                 createObject(1, 475, 547, 390, 240, "resources\\House\\movedWindow.png", "Look",
-                                "Move", "Cancel", "lookWindow",
-                                "moveWindow", "cancel");
+                                "Move", "Cancel", "lookMovedWindow",
+                                "moveMovedWindow", "cancel");
                 hideObject(16);
                 createObject(1, 475, 547, 390, 240, "resources\\House\\Window.png", "Look",
                                 "Move", "Cancel", "lookWindow",
                                 "moveWindow", "cancel");
 
                 createObject(1, 363, 119, 1070, 425, "resources\\House\\lookedRoof.png", "Look",
-                                "Move", "Cancel", "lookRoof",
-                                "moveRoof", "cancel");
+                                "Move", "Cancel", "lookMovedRoof",
+                                "moveMovedRoof", "cancel");
                 hideObject(18);
                 createObject(1, 363, 119, 1070, 425, "resources\\House\\Roof.png", "Look",
                                 "Move", "Cancel", "lookRoof",

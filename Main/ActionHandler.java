@@ -45,6 +45,42 @@ public class ActionHandler extends UI implements ActionListener {
                         game.ev01.nothingHere();
                     }
                     break;
+                case "moveChair":
+                    game.ev01.moveChair();
+                    game.ev01.nothingHere();
+                    break;
+                case "lookMovedChair":
+                    break;
+                case "moveMovedChair":
+                    break;
+                case "lookLookedLamp":
+                    break;
+                case "moveLookedLamp":
+                    break;
+                case "lookLamp":
+                    break;
+                case "moveLamp":
+                    break;
+                case "lookMovedBin":
+                    break;
+                case "moveMovedBin":
+                    break;
+                case "lookBin":
+                    break;
+                case "moveBin":
+                    break;
+                case "lookMovedCarpet":
+                    break;
+                case "moveMovedCarpet":
+                    break;
+                case "lookCarpet":
+                    break;
+                case "moveCarpet":
+                    break;
+                case "lookMovedBed":
+                    break;
+                case "moveMovedSheet":
+                    break;
                 case "lookBed":
                     game.ev01.nothingHere();
                     break;
@@ -58,10 +94,47 @@ public class ActionHandler extends UI implements ActionListener {
                         game.ev01.nothingHere();
                     }
                     break;
-                case "moveChair":
-                    game.ev01.moveChair();
-                    game.ev01.nothingHere();
+                case "lookMovedBush":
                     break;
+                case "moveMovedBush":
+                    break;
+                case "lookBush":
+                    break;
+                case "moveBush":
+                    break;
+                case "lookLookedPalm":
+                    break;
+                case "moveMovedPalm":
+                    break;
+                case "lookPalm":
+                    break;
+                case "movePalm":
+                    break;
+                case "lookMovedWindow2":
+                    break;
+                case "moveMovedWindow2":
+                    break;
+                case "lookWindow2":
+                    break;
+                case "moveWindow2":
+                    break;
+                case "lookMovedWindow":
+                    break;
+                case "moveMovedWindow":
+                    break;
+                case "lookWindow":
+                    break;
+                case "moveWindow":
+                    break;
+                case "lookMovedRoof":
+                    break;
+                case "moveMovedRoof":
+                    break;
+                case "lookRoof":
+                    break;
+                case "moveRoof":
+                    break;
+
                 case "lookCat":
                     if (game.player.hasCatHair && game.player.hasScratchMark) {
                         game.ev03.lookCatSure();
@@ -92,6 +165,9 @@ public class ActionHandler extends UI implements ActionListener {
                     game.sceneChanger.showScene2();
                     break;
             }
+
+        } catch (Exception eDeezNutz) {
+            eDeezNutz.printStackTrace();
         } finally {
             game.player.playerAction--;
             game.player.updatePlayerStatus();
