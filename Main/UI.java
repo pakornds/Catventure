@@ -144,7 +144,7 @@ public class UI {
         public void createTextBox() {
 
                 messageText = new JTextArea(
-                                "เป้าหมายของเกมนี้คือการกดสิ่งของต่างๆ เพื่อเก็บหาเบาะแสและรวมเพื่อไปตามหาแมวที่หนีจากบ้านเราไป โดยเมื่อกดของบางอย่างก็จะมีให้เลือกว่าจะทำอะไรกับสิ่งของนั้นและจะเสีย 1 action รวมถึงการเปลี่ยนแมพ (สามารถดูจำนวนการกดได้ที่ด้านซ้ายบน) Cancel จะไม่เสีย action และสามารถดูของที่อยู่ในตัวได้ที่มุมขวาบน (กดที่กล่องข้อความเพื่อปิด)");
+                                "The goal of this game is to press objects. To collect clues and join together to find the cat that escaped from our house. When pressing something, you will have to choose what to do with that item and will lose 1 action, including changing the map. (You can see the number of presses in the upper left corner.) Cancel will not waste action, and you can view the contents in the upper right corner. (Click on the message box to close)");
                 messageText.setLayout(new FlowLayout());
                 Insets margins = new Insets(40, 40, 40, 40);
                 messageText.setBounds(175, 800, 1600, 220);
