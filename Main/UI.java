@@ -1,11 +1,13 @@
 package Main;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -77,8 +79,17 @@ public class UI {
 
         // create the main game's windows
         public void createMainField() {
+
+                Toolkit toolkit = Toolkit.getDefaultToolkit();
+
+                // Get the screen size
+                Dimension screenSize = toolkit.getScreenSize();
+
+                // Display the screen size
+                int screenWidth = (int) screenSize.getWidth();
+                int screenHeight = (int) screenSize.getHeight();
                 window = new JFrame();
-                window.setSize(1920, 1080);
+                window.setSize(screenWidth, screenHeight);
                 window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 window.getContentPane().setBackground(Color.BLACK);
                 window.setLayout(null);
@@ -385,7 +396,9 @@ public class UI {
 
         public void showItemCenter(int idx, String itemFileLocation, int bgNum) {
                 closeTextBox();
-                game.ui.bgPanel[bgNum].setVisible(false);
+                game.ui.bgPanel[0].setVisible(false);
+                game.ui.bgPanel[1].setVisible(false);
+                game.ui.bgPanel[2].setVisible(false);
 
                 // Create a new JDialog for the item popup
                 JDialog itemDialog = new JDialog(window);
