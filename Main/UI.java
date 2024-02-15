@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Insets;
@@ -80,14 +81,21 @@ public class UI {
         // create the main game's windows
         public void createMainField() {
 
+                // Get the default toolkit and screen device
                 Toolkit toolkit = Toolkit.getDefaultToolkit();
+                GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+                GraphicsDevice gd = ge.getDefaultScreenDevice();
 
-                // Get the screen size
-                Dimension screenSize = toolkit.getScreenSize();
-
-                // Display the screen size
+                // Get the screen size with scaling taken into account
+                Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
                 int screenWidth = (int) screenSize.getWidth();
                 int screenHeight = (int) screenSize.getHeight();
+
+                // Adjust size based on screen scaling
+                int screenScaling = (int) (toolkit.getScreenResolution() / 96.0);
+                screenWidth /= screenScaling;
+                screenHeight /= screenScaling;
+
                 window = new JFrame();
                 window.setSize(screenWidth, screenHeight);
                 window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
