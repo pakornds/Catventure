@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Insets;
@@ -91,19 +90,14 @@ public class UI {
                 int screenWidth = (int) screenSize.getWidth();
                 int screenHeight = (int) screenSize.getHeight();
 
-                // Adjust size based on screen scaling
-                int screenScaling = (int) (toolkit.getScreenResolution() / 96.0);
-                screenWidth /= screenScaling;
-                screenHeight /= screenScaling;
-
                 window = new JFrame();
                 window.setSize(screenWidth, screenHeight);
                 window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 window.getContentPane().setBackground(Color.BLACK);
                 window.setLayout(null);
                 window.setResizable(false);
-                window.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                window.setUndecorated(true);
+                // window.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                // window.setUndecorated(true);
 
                 // Add KeyListener to the JFrame
                 // Register Escape key globally
@@ -144,7 +138,7 @@ public class UI {
         public void createTextBox() {
 
                 messageText = new JTextArea(
-                                "The goal of this game is to press objects. To collect clues and join together to find the cat that escaped from our house. When pressing something, you will have to choose what to do with that item and will lose 1 action, including changing the map. (You can see the number of presses in the upper left corner.) Cancel will not waste action, and you can view the contents in the upper right corner. (Click on the message box to close)");
+                                "เป้าหมายของเกมนี้คือการกดสิ่งของต่างๆ เพื่อเก็บหาเบาะแสและรวมเพื่อไปตามหาแมวที่หนีจากบ้านเราไป โดยเมื่อกดของบางอย่างก็จะมีให้เลือกว่าจะทำอะไรกับสิ่งของนั้นและจะเสีย 1 action รวมถึงการเปลี่ยนแมพ (สามารถดูจำนวนการกดได้ที่ด้านซ้ายบน) Cancel จะไม่เสีย action และสามารถดูของที่อยู่ในตัวได้ที่มุมขวาบน (กดที่กล่องข้อความเพื่อปิด)");
                 messageText.setLayout(new FlowLayout());
                 Insets margins = new Insets(40, 40, 40, 40);
                 messageText.setBounds(175, 800, 1600, 220);
