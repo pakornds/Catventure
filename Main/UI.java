@@ -123,7 +123,7 @@ public class UI {
     public void createTextBox() {
 
         messageText = new JTextArea(
-                "เป้าหมายของเกมนี้คือการกดสิ่งของต่างๆ เพื่อเก็บหาเบาะแสและรวมเพื่อไปตามหาแมวที่หนีจากบ้านเราไป โดยเมื่อกดของบางอย่างก็จะมีให้เลือกว่าจะทำอะไรกับสิ่งของนั้นโดยจะเป็นการเสีย 1 action รวมถึงการเปลี่ยนแมพด้วย มีแค่ Cancel ที่จะไม่เสียอะไร ดังนั้นคิดให้ดีก่อนจะกดอะไร (กดที่กล่องข้อความเพื่อปิด)");
+                "เป้าหมายของเกมนี้คือการกดสิ่งของต่างๆ เพื่อเก็บหาเบาะแสและรวมเพื่อไปตามหาแมวที่หนีจากบ้านเราไป โดยเมื่อกดของบางอย่างก็จะมีให้เลือกว่าจะทำอะไรกับสิ่งของนั้นและจะเสีย 1 action รวมถึงการเปลี่ยนแมพ (สามารถดูจำนวนการกดได้ที่ด้านซ้ายบน) Cancel จะไม่เสีย action และสามารถดูของที่อยู่ในตัวได้ที่มุมขวาบน (กดที่กล่องข้อความเพื่อปิด)");
         messageText.setLayout(new FlowLayout());
         Insets margins = new Insets(40, 40, 40, 40);
         messageText.setBounds(175, 800, 1600, 220);
@@ -263,6 +263,7 @@ public class UI {
         });
 
         objectList.add(objLabel);
+        objLabel.setBackground(Color.blue);
 
         // put the object wanting to overwritten in the bottom
         bgPanel[bgNum].add(objLabel);
@@ -427,7 +428,7 @@ public class UI {
         // SCENE 0
 
         createBackground(0, "resources\\Bedroom\\TheBedroom2.png");
-        createChangeMapBtn(0, 0, 450, 100, 100, "goScene1", "resources\\arrowLeft.png", false);
+        createChangeMapBtn(0, 0, 0, 100, 100, "goScene1", "resources\\arrowLeft.png", false);
 
         // CHAIR
         createObject(0, 550, 380, 260, 390, "resources\\Bedroom\\movedChair.png", "Look", "Move", "Cancel",
@@ -466,80 +467,90 @@ public class UI {
 
         bgPanel[0].add(bgLabel[0]);
 
-        // // SCENE 1
+        // SCENE 1
 
-        // createBackground(1, "resources\\House\\House.png");
-        // createChangeMapBtn(1, 0, 400, 100, 100, "goScene2",
-        // "resources\\arrowLeft.png", false);
-        // createChangeMapBtn(1, 1440, 400, 100, 100, "goScene0",
-        // "resources\\arrowRight.png", true);
+        createBackground(1, "resources\\House\\House.png");
+        createChangeMapBtn(1, 0, 0, 100, 100, "goScene2",
+                "resources\\arrowLeft.png", false);
+        createChangeMapBtn(1, 0, 0, 100, 100, "goScene0",
+                "resources\\arrowRight.png", true);
 
-        // // Bush
-        // createObject(1, 0, 500, 410, 550, "resources\\House\\movedBush.png", "Look",
-        // "Move", "Cancel", "lookMovedBush",
-        // "moveMovedBush", "cancel");
-        // hideObject(17);
-        // createObject(1, 0, 500, 410, 550, "resources\\House\\Bush.png", "Look",
-        // "Move", "Cancel", "lookBush",
-        // "moveBush", "cancel");
+        // Bush
+        createObject(1, 0, 500, 410, 550, "resources\\House\\movedBush.png", "Look",
+                "Move", "Cancel", "lookMovedBush",
+                "moveMovedBush", "cancel");
+        hideObject(10);
+        createObject(1, 0, 500, 410, 550, "resources\\House\\Bush.png", "Look",
+                "Move", "Cancel", "lookBush",
+                "moveBush", "cancel");
 
-        // // Palm tree
-        // createObject(1, 1290, 0, 590, 800, "resources\\House\\Palm.png", "Look",
-        // "Move", "Cancel", "lookPalm",
-        // "movePalm", "cancel");
+        // Palm tree
+        createObject(1, 1290, 0, 590, 800, "resources\\House\\lookedPalm.png", "Look",
+                "Move", "Cancel", "lookLookedPalm",
+                "moveMovedPalm", "cancel");
+        hideObject(12);
+        createObject(1, 1290, 0, 590, 800, "resources\\House\\Palm.png", "Look",
+                "Move", "Cancel", "lookPalm",
+                "movePalm", "cancel");
 
-        // createObject(1, 882, 223, 1070, 425, "resources\\House\\movedWindow2.png",
-        // "Look", "Move", "Cancel",
-        // "lookMovedWindow2", "moveMovedWindow2", "cancel");
-        // hideObject(20);
-        // createObject(1, 882, 223, 1070, 425, "resources\\House\\Window2.png", "Look",
-        // "Move", "Cancel", "lookWindow2",
-        // "moveWindow2", "cancel");
+        createObject(1, 882, 223, 1070, 425, "resources\\House\\movedWindow2.png",
+                "Look", "Move", "Cancel",
+                "lookMovedWindow2", "moveMovedWindow2", "cancel");
+        hideObject(14);
+        createObject(1, 882, 223, 1070, 425, "resources\\House\\Window2.png", "Look",
+                "Move", "Cancel", "lookWindow2",
+                "moveWindow2", "cancel");
 
-        // createObject(1, 475, 547, 390, 240, "resources\\House\\Window.png", "Look",
-        // "Move", "Cancel", "lookWindow",
-        // "moveWindow", "cancel");
+        createObject(1, 475, 547, 390, 240, "resources\\House\\movedWindow.png", "Look",
+                "Move", "Cancel", "lookWindow",
+                "moveWindow", "cancel");
+        hideObject(16);
+        createObject(1, 475, 547, 390, 240, "resources\\House\\Window.png", "Look",
+                "Move", "Cancel", "lookWindow",
+                "moveWindow", "cancel");
 
-        // createObject(1, 363, 119, 1070, 425, "resources\\House\\Roof.png", "Look",
-        // "Move", "Cancel", "lookRoof",
-        // "moveRoof", "cancel");
+        createObject(1, 363, 119, 1070, 425, "resources\\House\\lookedRoof.png", "Look",
+                "Move", "Cancel", "lookRoof",
+                "moveRoof", "cancel");
+        hideObject(18);
+        createObject(1, 363, 119, 1070, 425, "resources\\House\\Roof.png", "Look",
+                "Move", "Cancel", "lookRoof",
+                "moveRoof", "cancel");
 
-        // bgPanel[1].add(bgLabel[1]);
+        bgPanel[1].add(bgLabel[1]);
 
-        // // SCENE 2
-        // createBackground(2, "resources\\Neighborhood\\Background.png");
-        // createChangeMapBtn(2, 1440, 400, 100, 100, "goScene1",
-        // "resources\\arrowRight.png", true);
-        // createObject(2, 870, 310, 100, 100, "resources\\Neighborhood\\BiggerCat.png",
-        // "Look", "Touch",
-        // "Cancel", "lookCat", "touchCat", "cancel");
-        // // -----COLLAR IS HERE -----
-        // createObject(0, 500, 200, 500, 500, "resources\\Items\\Collar.png", "Look",
-        // "Move", "Cancel",
-        // "lookCollar", "moveCollar", "cancel");
-        // hideObject(25);
+        // SCENE 2
+        createBackground(2, "resources\\Neighborhood\\Background.png");
+        createChangeMapBtn(2, 0, 0, 100, 100, "goScene1",
+                "resources\\arrowRight.png", true);
+        createObject(2, 870, 310, 100, 100, "resources\\Neighborhood\\BiggerCat.png",
+                "Look", "Touch",
+                "Cancel", "lookCat", "touchCat", "cancel");
 
-        // createObject(2, 1075, 550, 245, 175,
-        // "resources\\Neighborhood\\lookedBox.png", "Look", "Move", "Cancel",
-        // "lookLookedBox", "moveLookedBox", "cancel");
-        // hideObject(26);
-        // createObject(2, 1075, 550, 245, 175, "resources\\Neighborhood\\Box.png",
-        // "Look", "Move", "Cancel", "lookBox",
-        // "moveBox", "cancel");
+        createObject(2, 1075, 550, 245, 175,
+                "resources\\Neighborhood\\lookedBox.png", "Look", "Move", "Cancel",
+                "lookLookedBox", "moveLookedBox", "cancel");
+        hideObject(21);
+        createObject(2, 1075, 550, 245, 175, "resources\\Neighborhood\\Box.png",
+                "Look", "Move", "Cancel", "lookBox",
+                "moveBox", "cancel");
 
-        // createObject(2, 1600, 233, 500, 320, "resources\\Neighborhood\\Car.png",
-        // "Look", "Move", "Cancel", "lookMovedCar", "moveMovedCar", "cancel");
-        // hideObject(28);
-        // createObject(2, 1168, 233, 500, 320, "resources\\Neighborhood\\Car.png",
-        // "Look", "Move", "Cancel", "lookCar", "moveCar", "cancel");
+        createObject(2,
+                1168, 233,
+                500,
+                320, "resources\\Neighborhood\\Car.png",
+                "Look", "Move", "Cancel", "lookMovedCar", "moveMovedCar", "cancel");
+        hideObject(23);
+        createObject(2, 1168, 233, 500, 320, "resources\\Neighborhood\\Car.png",
+                "Look", "Move", "Cancel", "lookCar", "moveCar", "cancel");
 
-        // createObject(2, 450, 404, 359, 338, "resources\\Neighborhood\\movedBin.png",
-        // "Look", "Move", "Cancel",
-        // "lookMovedBin", "moveMovedBin", "cancel");
-        // hideObject(30);
-        // createObject(2, 450, 350, 275, 397, "resources\\Neighborhood\\Bin.png",
-        // "Look", "Move", "Cancel", "lookBin",
-        // "moveBin", "cancel");
-        // bgPanel[2].add(bgLabel[2]);
+        createObject(2, 450, 404, 359, 338, "resources\\Neighborhood\\movedBin.png",
+                "Look", "Move", "Cancel",
+                "lookMovedBin", "moveMovedBin", "cancel");
+        hideObject(25);
+        createObject(2, 450, 350, 275, 397, "resources\\Neighborhood\\Bin.png",
+                "Look", "Move", "Cancel", "lookBin",
+                "moveBin", "cancel");
+        bgPanel[2].add(bgLabel[2]);
     }
 }
