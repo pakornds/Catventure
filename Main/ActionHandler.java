@@ -50,7 +50,7 @@ public class ActionHandler extends UI implements ActionListener {
                     break;
                 case "moveSheet":
                     if (isFirstInteraction(yourChoice)) {
-                        game.ui.createInventoryItem(itemIdx, "resources\\Items\\Fur.png", 0);
+                        game.ui.createInventoryItem(itemIdx, "resources\\Items\\speed.gif", 0);
                         itemIdx++;
                         game.ev01.moveSheet();
 
