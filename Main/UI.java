@@ -83,8 +83,8 @@ public class UI {
 
                 // Get the default toolkit and screen device
                 Toolkit toolkit = Toolkit.getDefaultToolkit();
-                GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-                GraphicsDevice gd = ge.getDefaultScreenDevice();
+                // GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+                // GraphicsDevice gd = ge.getDefaultScreenDevice();
 
                 // Get the screen size with scaling taken into account
                 Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
