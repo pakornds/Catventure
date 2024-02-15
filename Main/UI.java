@@ -52,6 +52,8 @@ public class UI {
         JPanel inventoryPanel;
         private int MAX_ITEMS = 6;
         JLabel itemLabel[] = new JLabel[MAX_ITEMS];
+        private int screenWidth;
+        private int screenHeight;
 
         // ArrayList of objects to display or hide
         public ArrayList<JLabel> objectList = new ArrayList<>();
@@ -87,8 +89,8 @@ public class UI {
 
                 // Get the screen size with scaling taken into account
                 Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-                int screenWidth = (int) screenSize.getWidth();
-                int screenHeight = (int) screenSize.getHeight();
+                screenWidth = (int) screenSize.getWidth();
+                screenHeight = (int) screenSize.getHeight();
 
                 window = new JFrame();
                 window.setSize(screenWidth, screenHeight);
@@ -219,14 +221,14 @@ public class UI {
 
                 // create the space for the background
                 bgPanel[bgNum] = new JPanel();
-                bgPanel[bgNum].setBounds(0, 0, 1920, 1080);
+                bgPanel[bgNum].setBounds(0, 0, screenWidth, screenHeight);
                 bgPanel[bgNum].setBackground(Color.blue);
                 bgPanel[bgNum].setLayout(null);
                 window.add(bgPanel[bgNum]);
 
                 // display an image
                 bgLabel[bgNum] = new JLabel();
-                bgLabel[bgNum].setBounds(0, 0, 1920, 1080);
+                bgLabel[bgNum].setBounds(0, 0, screenWidth, screenHeight);
 
                 ImageIcon bgIcon1 = new ImageIcon(getClass().getClassLoader().getResource(bgFileLocation));
                 bgLabel[bgNum].setIcon(bgIcon1);
