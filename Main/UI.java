@@ -324,8 +324,8 @@ public class UI {
         lifePanel.setOpaque(false);
         window.add(lifePanel);
 
-        ImageIcon lifeIcon = new ImageIcon(getClass().getClassLoader().getResource("resources\\heart.png"));
-        Image image = lifeIcon.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
+        ImageIcon lifeIcon = new ImageIcon(getClass().getClassLoader().getResource("resources\\CatFoot.png"));
+        Image image = lifeIcon.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
         lifeIcon = new ImageIcon(image);
 
         int i = 0;
