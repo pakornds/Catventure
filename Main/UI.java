@@ -4,9 +4,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
@@ -82,13 +85,15 @@ public class UI {
 
                 // Get the default toolkit and screen device
                 Toolkit toolkit = Toolkit.getDefaultToolkit();
-                // GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-                // GraphicsDevice gd = ge.getDefaultScreenDevice();
 
                 // Get the screen size with scaling taken into account
-                Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-                int screenWidth = (int) screenSize.getWidth();
-                int screenHeight = (int) screenSize.getHeight();
+                GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+                GraphicsDevice gd = ge.getDefaultScreenDevice();
+                GraphicsConfiguration gc = gd.getDefaultConfiguration();
+                Rectangle bounds = gc.getBounds();
+
+                int screenWidth = (int) bounds.getWidth();
+                int screenHeight = (int) bounds.getHeight();
 
                 window = new JFrame();
                 window.setSize(screenWidth, screenHeight);
