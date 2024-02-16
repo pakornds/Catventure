@@ -485,10 +485,10 @@ public class UI {
                                 "moveLamp", "cancel");
 
                 // BEDROOM BIN
-                createObject(0, -100, 594, 231, 240, "resources\\Bedroom\\movedBin.png", "Look", "Move", "Cancel",
+                createObject(0, 300, 850, 231, 240, "resources\\Bedroom\\movedBin.png", "Look", "Move", "Cancel",
                                 "lookMovedBin", "moveMovedBin", "cancel");
                 hideObject(4);
-                createObject(0, -100, 594, 231, 240, "resources\\Bedroom\\Bin.png", "Look", "Move", "Cancel", "lookBin",
+                createObject(0, 300, 850, 231, 240, "resources\\Bedroom\\Bin.png", "Look", "Move", "Cancel", "lookBin",
                                 "moveBin", "cancel");
 
                 // Carpet

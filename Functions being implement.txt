@@ -1,11 +1,7 @@
-fix object being everywhere (?)
-adding obj
 adding action handling
-change icon
-ending according to current item
-
-add dummy objs and its handling
-difficulty level
-
+dummy objs and its handling
 obj can be move back and forth
 looking at object before being moved and after is different
+endings scenes
+
+difficulty level
