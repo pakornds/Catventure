@@ -1,6 +1,7 @@
 package Main;
 
 import Event.Event01;
+import Event.Event02;
 import Event.Event03;
 
 public class GameManager {
@@ -12,6 +13,7 @@ public class GameManager {
     public SceneChanger sceneChanger = new SceneChanger(this);
 
     public Event01 ev01 = new Event01(this);
+    public Event02 ev02 = new Event02(this);
     public Event03 ev03 = new Event03(this);
 
     // Sound

@@ -246,13 +246,11 @@ public class UI {
                 menuItem[0] = new JMenuItem(choiceName1);
                 menuItem[0].addActionListener(game.aHandler);
                 menuItem[0].setActionCommand(choiceCommand1);
-                firstInteractionMap.put(choiceCommand1, true);
                 popMenu.add(menuItem[0]);
 
                 menuItem[1] = new JMenuItem(choiceName2);
                 menuItem[1].addActionListener(game.aHandler);
                 menuItem[1].setActionCommand(choiceCommand2);
-                firstInteractionMap.put(choiceCommand2, true);
                 popMenu.add(menuItem[1]);
 
                 menuItem[2] = new JMenuItem(choiceName3);
@@ -263,6 +261,8 @@ public class UI {
                 // create objects
                 JLabel objLabel = new JLabel();
                 objLabel.setBounds(objX, objY, objWidth, objHeight);
+                objLabel.setOpaque(true);
+                objLabel.setBackground(Color.blue);
 
                 ImageIcon objIcon1 = new ImageIcon(
                                 getClass().getClassLoader().getResource(objFileLocation));
@@ -477,10 +477,10 @@ public class UI {
                                 "moveChair", "cancel");
 
                 // LAMP
-                createObject(0, 730, 200, 350, 331, "resources\\Bedroom\\lookedLamp.png", "Look", "Move", "Cancel",
+                createObject(0, 730, 200, 350, 350, "resources\\Bedroom\\lookedLamp.png", "Look", "Close", "Cancel",
                                 "lookLookedLamp", "moveLookedLamp", "cancel");
                 hideObject(2);
-                createObject(0, 730, 200, 280, 331, "resources\\Bedroom\\Lamp.png", "Look", "Move", "Cancel",
+                createObject(0, 730, 200, 350, 350, "resources\\Bedroom\\Lamp.png", "Look", "Open", "Cancel",
                                 "lookLamp",
                                 "moveLamp", "cancel");
 
@@ -526,35 +526,35 @@ public class UI {
 
                 // Palm tree
                 createObject(1, 1290, 0, 590, 800, "resources\\House\\lookedPalm.png", "Look",
-                                "Move", "Cancel", "lookLookedPalm",
+                                "Climb down", "Cancel", "lookLookedPalm",
                                 "moveMovedPalm", "cancel");
                 hideObject(12);
                 createObject(1, 1290, 0, 590, 800, "resources\\House\\Palm.png", "Look",
-                                "Move", "Cancel", "lookPalm",
+                                "Climb up", "Cancel", "lookPalm",
                                 "movePalm", "cancel");
 
                 createObject(1, 882, 223, 1070, 425, "resources\\House\\movedWindow2.png",
-                                "Look", "Move", "Cancel",
+                                "Look", "Close", "Cancel",
                                 "lookMovedWindow2", "moveMovedWindow2", "cancel");
                 hideObject(14);
                 createObject(1, 882, 223, 1070, 425, "resources\\House\\Window2.png", "Look",
-                                "Move", "Cancel", "lookWindow2",
+                                "Open", "Cancel", "lookWindow2",
                                 "moveWindow2", "cancel");
 
                 createObject(1, 475, 547, 390, 240, "resources\\House\\movedWindow.png", "Look",
-                                "Move", "Cancel", "lookMovedWindow",
+                                "Close", "Cancel", "lookMovedWindow",
                                 "moveMovedWindow", "cancel");
                 hideObject(16);
                 createObject(1, 475, 547, 390, 240, "resources\\House\\Window.png", "Look",
-                                "Move", "Cancel", "lookWindow",
+                                "Open", "Cancel", "lookWindow",
                                 "moveWindow", "cancel");
 
                 createObject(1, 363, 119, 1070, 425, "resources\\House\\lookedRoof.png", "Look",
-                                "Move", "Cancel", "lookMovedRoof",
+                                "Climb down", "Cancel", "lookMovedRoof",
                                 "moveMovedRoof", "cancel");
                 hideObject(18);
                 createObject(1, 363, 119, 1070, 425, "resources\\House\\Roof.png", "Look",
-                                "Move", "Cancel", "lookRoof",
+                                "Climb up", "Cancel", "lookRoof",
                                 "moveRoof", "cancel");
 
                 bgPanel[1].add(bgLabel[1]);
@@ -586,11 +586,11 @@ public class UI {
 
                 createObject(2, 450, 404, 359, 338, "resources\\Neighborhood\\movedBin.png",
                                 "Look", "Move", "Cancel",
-                                "lookMovedBin", "moveMovedBin", "cancel");
+                                "lookMovedNbin", "moveMovedNbin", "cancel");
                 hideObject(25);
                 createObject(2, 450, 350, 275, 397, "resources\\Neighborhood\\Bin.png",
-                                "Look", "Move", "Cancel", "lookBin",
-                                "moveBin", "cancel");
+                                "Look", "Move", "Cancel", "lookNbin",
+                                "moveNbin", "cancel");
                 bgPanel[2].add(bgLabel[2]);
         }
 }

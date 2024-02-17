@@ -8,6 +8,12 @@ public class Player {
 
     public boolean hasCatHair;
     public boolean hasScratchMark;
+    public boolean hasToy;
+    public boolean hasSnack;
+    public boolean hasNest;
+    public boolean hasCollar;
+    public boolean hasPaws;
+    public boolean hasNettle;
 
     public Player(GameManager game) {
         this.game = game;
