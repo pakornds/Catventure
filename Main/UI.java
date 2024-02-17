@@ -62,7 +62,7 @@ public class UI {
         public UI(GameManager game) {
 
                 this.game = game;
-                playerMaxAction = 10;
+                playerMaxAction = 30;
 
                 createMainField();
                 createTextBox();
@@ -594,5 +594,41 @@ public class UI {
                                 "Look", "Move", "Cancel", "lookNbin",
                                 "moveNbin", "cancel");
                 bgPanel[2].add(bgLabel[2]);
+
+                // Bad Ending
+                createBackground(3, "resources\\Ending\\Bad\\1.png");
+                bgPanel[3].add(bgLabel[3]);
+                bgPanel[3].setVisible(false);
+                createBackground(4, "resources\\Ending\\Bad\\2.png");
+                bgPanel[4].add(bgLabel[4]);
+                bgPanel[4].setVisible(false);
+                createBackground(5, "resources\\Ending\\Bad\\3.png");
+                bgPanel[5].add(bgLabel[5]);
+                bgPanel[5].setVisible(false);
+                createBackground(6, "resources\\Ending\\Bad\\4.png");
+                bgPanel[6].add(bgLabel[6]);
+                bgPanel[6].setVisible(false);
+
+                // Late Ending
+                createBackground(7, "resources\\Ending\\Late\\1.png");
+                bgPanel[7].add(bgLabel[7]);
+                bgPanel[7].setVisible(false);
+                createBackground(8, "resources\\Ending\\Late\\2.png");
+                bgPanel[8].add(bgLabel[8]);
+                bgPanel[8].setVisible(false);
+
+                // Good Ending
+                createBackground(9, "resources\\Ending\\Good\\1.png");
+                bgPanel[9].add(bgLabel[9]);
+                bgPanel[9].setVisible(false);
+                createBackground(10, "resources\\Ending\\Good\\2.png");
+                bgPanel[10].add(bgLabel[10]);
+                bgPanel[10].setVisible(false);
+                createBackground(11, "resources\\Ending\\Good\\3.png");
+                bgPanel[11].add(bgLabel[11]);
+                bgPanel[11].setVisible(false);
+                createBackground(12, "resources\\Ending\\Good\\4.png");
+                bgPanel[12].add(bgLabel[12]);
+                bgPanel[12].setVisible(false);
         }
 }

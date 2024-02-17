@@ -282,18 +282,20 @@ public class ActionHandler extends UI implements ActionListener {
                     game.playSoundEffects(1);
                     break;
                 case "lookCat":
-                    if (game.player.hasCatHair && game.player.hasScratchMark) {
+                    if (game.player.hasNettle) {
                         game.ev03.lookCatSure();
-                    } else if (game.player.hasCatHair || game.player.hasScratchMark) {
+                    } else if (game.player.hasCatHair && game.player.hasScratchMark && game.player.hasCollar
+                            && game.player.hasToy) {
                         game.ev03.lookCatNotSure();
                     } else {
                         game.ev03.lookNUHUH();
                     }
                     break;
                 case "touchCat":
-                    if (game.player.hasCatHair && game.player.hasScratchMark) {
+                    if (game.player.hasNettle) {
                         game.ev03.touchCatSure();
-                    } else if (game.player.hasCatHair || game.player.hasScratchMark) {
+                    } else if (game.player.hasCatHair && game.player.hasScratchMark && game.player.hasCollar
+                            && game.player.hasToy) {
                         game.ev03.touchCatNotSure();
                     } else {
                         game.ev03.touchNUHUH();

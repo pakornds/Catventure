@@ -66,6 +66,7 @@ public class Event03 {
     public void lookCatNotSure() {
         game.ui.messageText.setText("อาจจะใช่แมวของคุณ");
         game.ui.openTextBox();
+
     }
 
     public void lookCatSure() {
@@ -74,13 +75,15 @@ public class Event03 {
     }
 
     public void touchNUHUH() {
-        game.ui.messageText.setText("จับผิดตัว!");
+        game.ui.messageText.setText("คุณจับผิดตัว!");
         game.ui.openTextBox();
+        game.sceneChanger.showBadEndScene();
     }
 
     public void touchCatNotSure() {
-        game.ui.messageText.setText("หน้าไม่คุ้นเลย...");
+        game.ui.messageText.setText("เจอแมวแล้ว!");
         game.ui.openTextBox();
+        game.sceneChanger.showGoodEndScene();
     }
 
     public void touchCatSure() {

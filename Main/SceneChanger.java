@@ -36,15 +36,9 @@ public class SceneChanger {
         game.ui.openTextBox();
     }
 
-    public void showEndScene() {
-        game.ui.bgPanel[0].setVisible(false);
-        game.ui.bgPanel[1].setVisible(false);
-        game.ui.bgPanel[2].setVisible(true);
-        game.ui.messageText.setText("คุณมาที่ละแวกบ้าน นั่นใช่น้องแมวหรือเปล่า!?");
-        game.ui.openTextBox();
-    }
-
     public void showGameoverScene() {
+        game.ui.lifePanel.setVisible(false);
+        game.ui.inventoryPanel.setVisible(false);
         game.ui.bgPanel[0].setVisible(false);
         game.ui.bgPanel[1].setVisible(false);
         game.ui.bgPanel[2].setVisible(false);
@@ -55,41 +49,182 @@ public class SceneChanger {
             @Override
             public void actionPerformed(ActionEvent e) {
                 game.ui.closeTextBox();
-                showScene0();
+                game.music.stop();
+                game.ui.bgPanel[7].setVisible(true);
+                game.ui.bgPanel[8].setVisible(false);
+
+                // Start the next timer within this ActionListener
+                Timer timer2 = new Timer(5000, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        game.ui.bgPanel[7].setVisible(false);
+                        game.ui.bgPanel[8].setVisible(true);
+
+                        // Start the third timer within this ActionListener
+                        Timer timer3 = new Timer(6000, new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                System.exit(0);
+                            }
+                        });
+
+                        timer3.setRepeats(false);
+                        timer3.start();
+                    }
+                });
+
+                timer2.setRepeats(false);
+                timer2.start();
+            }
+        });
+
+        timer.setRepeats(false);
+        timer.start();
+    }
+
+    public void showBadEndScene() {
+        game.ui.lifePanel.setVisible(false);
+        game.ui.inventoryPanel.setVisible(false);
+        game.ui.bgPanel[0].setVisible(false);
+        game.ui.bgPanel[1].setVisible(false);
+        game.ui.bgPanel[2].setVisible(false);
+        game.ui.openTextBox();
+
+        Timer timer = new Timer(3000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                game.ui.closeTextBox();
+                game.music.stop();
+                game.ui.bgPanel[3].setVisible(true);
+                game.ui.bgPanel[4].setVisible(false);
+                game.ui.bgPanel[5].setVisible(false);
+                game.ui.bgPanel[6].setVisible(false);
+                Timer timer2 = new Timer(4000, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        game.ui.bgPanel[3].setVisible(false);
+                        game.ui.bgPanel[4].setVisible(true);
+                        game.ui.bgPanel[5].setVisible(false);
+                        game.ui.bgPanel[6].setVisible(false);
+
+                        Timer timer3 = new Timer(4000, new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                game.ui.bgPanel[3].setVisible(false);
+                                game.ui.bgPanel[4].setVisible(false);
+                                game.ui.bgPanel[5].setVisible(true);
+                                game.ui.bgPanel[6].setVisible(false);
+
+                                Timer timer4 = new Timer(4000, new ActionListener() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent e) {
+                                        game.ui.bgPanel[3].setVisible(false);
+                                        game.ui.bgPanel[4].setVisible(false);
+                                        game.ui.bgPanel[5].setVisible(false);
+                                        game.ui.bgPanel[6].setVisible(true);
+
+                                        Timer timer5 = new Timer(6000, new ActionListener() {
+                                            @Override
+                                            public void actionPerformed(ActionEvent e) {
+                                                System.exit(0);
+                                            }
+                                        });
+
+                                        timer5.setRepeats(false);
+                                        timer5.start();
+                                    }
+                                });
+
+                                timer4.setRepeats(false);
+                                timer4.start();
+                            }
+                        });
+
+                        timer3.setRepeats(false);
+                        timer3.start();
+                    }
+                });
+
+                timer2.setRepeats(false);
+                timer2.start();
             }
         });
 
         timer.setRepeats(false);
         timer.start();
 
-        Timer timer2 = new Timer(5000, new ActionListener() {
+    }
+
+    public void showGoodEndScene() {
+        game.ui.lifePanel.setVisible(false);
+        game.ui.inventoryPanel.setVisible(false);
+        game.ui.bgPanel[0].setVisible(false);
+        game.ui.bgPanel[1].setVisible(false);
+        game.ui.bgPanel[2].setVisible(false);
+        game.ui.openTextBox();
+
+        Timer timer = new Timer(3000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                showScene1();
+                game.ui.closeTextBox();
+                game.music.stop();
+                game.ui.bgPanel[9].setVisible(true);
+                game.ui.bgPanel[10].setVisible(false);
+                game.ui.bgPanel[11].setVisible(false);
+                game.ui.bgPanel[12].setVisible(false);
+                Timer timer2 = new Timer(4000, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        game.ui.bgPanel[9].setVisible(false);
+                        game.ui.bgPanel[10].setVisible(true);
+                        game.ui.bgPanel[11].setVisible(false);
+                        game.ui.bgPanel[12].setVisible(false);
+
+                        Timer timer3 = new Timer(4000, new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                game.ui.bgPanel[9].setVisible(false);
+                                game.ui.bgPanel[10].setVisible(false);
+                                game.ui.bgPanel[11].setVisible(true);
+                                game.ui.bgPanel[12].setVisible(false);
+
+                                Timer timer4 = new Timer(4000, new ActionListener() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent e) {
+                                        game.ui.bgPanel[9].setVisible(false);
+                                        game.ui.bgPanel[10].setVisible(false);
+                                        game.ui.bgPanel[11].setVisible(false);
+                                        game.ui.bgPanel[12].setVisible(true);
+
+                                        Timer timer5 = new Timer(6000, new ActionListener() {
+                                            @Override
+                                            public void actionPerformed(ActionEvent e) {
+                                                System.exit(0);
+                                            }
+                                        });
+
+                                        timer5.setRepeats(false);
+                                        timer5.start();
+                                    }
+                                });
+
+                                timer4.setRepeats(false);
+                                timer4.start();
+                            }
+                        });
+
+                        timer3.setRepeats(false);
+                        timer3.start();
+                    }
+                });
+
+                timer2.setRepeats(false);
+                timer2.start();
             }
         });
 
-        timer2.setRepeats(false);
-        timer2.start();
+        timer.setRepeats(false);
+        timer.start();
 
-        Timer timer3 = new Timer(5000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                showScene2();
-            }
-        });
-
-        timer3.setRepeats(false);
-        timer3.start();
-
-        Timer timer4 = new Timer(5000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
-
-        timer4.setRepeats(false);
-        timer4.start();
     }
 }
