@@ -1,5 +1,7 @@
 package Main;
 
+import javax.swing.JLabel;
+
 public class Player {
     GameManager game;
 
@@ -37,27 +39,21 @@ public class Player {
 
     public void updatePlayerDifficulty(String difficulty) {
         if (difficulty.equals("Easy")) {
-            playerMaxAction = 30;
-            playerAction = playerMaxAction;
+            playerAction = 30;
         } else if (difficulty.equals("Medium")) {
-            playerMaxAction = 20;
-            playerAction = playerMaxAction;
+            playerAction = 20;
         } else if (difficulty.equals("Hard")) {
-            playerMaxAction = 10;
-            playerAction = playerMaxAction;
+            playerAction = 10;
         }
         // game.ui.removeLifeField();
-        game.ui.createLifeField(playerMaxAction);
+        // game.ui.createLifeField(playerMaxAction);
         updatePlayerStatus();
     }
 
     public void updatePlayerStatus() {
-        System.out.println("Player Max Action updated to: " + playerMaxAction);
-        System.out.println("Player Action updated to: " + playerAction);
-        int i = 0;
-        while (i < playerMaxAction) {
-            game.ui.lifeLabel.get(i).setVisible(false);
-            i++;
+
+        for (JLabel label : game.ui.lifeLabel) {
+            label.setVisible(false);
         }
 
         int actionCount = playerAction - 1;
@@ -69,7 +65,6 @@ public class Player {
 
         // show action
         while (actionCount >= 0) {
-            System.out.println(actionCount);
             game.ui.lifeLabel.get(actionCount).setVisible(true);
             actionCount--;
         }

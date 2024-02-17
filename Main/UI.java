@@ -439,6 +439,8 @@ public class UI {
         }
 
         public void createLifeField(int playerAction) {
+                lifeLabel.clear();
+
                 int LIFE_PANEL_X = 30;
                 int LIFE_PANEL_Y = 15;
                 int LIFE_PANEL_WIDTH = 400;
@@ -460,11 +462,9 @@ public class UI {
                 lifeIcon = new ImageIcon(image);
 
                 int i = 0;
-                System.out.println("max ac: " + playerAction);
                 while (i < playerAction) {
                         lifeLabel.add(new JLabel());
                         lifeLabel.get(i).setIcon(lifeIcon);
-                        lifeLabel.get(i).setVisible(false);
                         lifePanel.add(lifeLabel.get(i));
                         i++;
                 }
