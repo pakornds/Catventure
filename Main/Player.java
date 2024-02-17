@@ -37,7 +37,7 @@ public class Player {
         updatePlayerStatus();
     }
 
-    public void updatePlayerDifficulty(String difficulty) {
+    public int updatePlayerDifficulty(String difficulty) {
         if (difficulty.equals("Easy")) {
             playerAction = 30;
         } else if (difficulty.equals("Medium")) {
@@ -48,6 +48,8 @@ public class Player {
         // game.ui.removeLifeField();
         // game.ui.createLifeField(playerMaxAction);
         updatePlayerStatus();
+
+        return playerAction;
     }
 
     public void updatePlayerStatus() {

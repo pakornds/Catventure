@@ -209,7 +209,7 @@ public class UI {
                 Image image = icon.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
                 icon = new ImageIcon(image);
                 String message = "This game wonn't save your progress!";
-                String title = "Exit Confirmation";
+                String title = "Go to Main Menu Confirmation";
 
                 int result = JOptionPane.showOptionDialog(
                                 window,
@@ -218,12 +218,12 @@ public class UI {
                                 JOptionPane.YES_NO_OPTION,
                                 JOptionPane.QUESTION_MESSAGE,
                                 icon,
-                                new Object[] { "Yes, exit", "No, cancel" },
+                                new Object[] { "Yes, go to main menu", "No, cancel" },
                                 "No, cancel");
 
                 if (result == JOptionPane.YES_OPTION) {
                         // If user chooses to exit, close the application
-                        System.exit(0);
+                        game.sceneChanger.showTitleScreen();
                 }
         }
 
@@ -484,6 +484,13 @@ public class UI {
                 int INVENTORY_PANEL_Y = 15;
                 int INVENTORY_PANEL_WIDTH = 400;
                 int INVENTORY_PANEL_HEIGHT = 50;
+
+                // Remove existing inventory field
+                if (inventoryPanel != null) {
+                        window.remove(inventoryPanel);
+                        window.repaint();
+                }
+
                 inventoryPanel = new JPanel();
                 inventoryPanel.setBounds(INVENTORY_PANEL_X, INVENTORY_PANEL_Y, INVENTORY_PANEL_WIDTH,
                                 INVENTORY_PANEL_HEIGHT);

@@ -3,6 +3,7 @@ package Main;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 public class SceneChanger {
@@ -37,14 +38,11 @@ public class SceneChanger {
     }
 
     public void showTitleScreen() {
-        for (int i = 0; i < game.ui.bgPanel.length - 1; i++) {
-            if (game.ui.bgPanel[i] != null) {
-                game.ui.bgPanel[i].setVisible(false);
-            }
-        }
-        game.ui.bgPanel[19].setVisible(true);
-        game.ui.messageText.setText(
-                "(ตั้ง Display scale เป็น 100% !!)\n เป้าหมายของเกมนี้คือการกดสิ่งของต่างๆ เพื่อเก็บหาเบาะแสและรวมเพื่อไปตามหาแมวที่หนีจากบ้านเราไป โดยเมื่อกดของบางอย่างก็จะมีให้เลือกว่าจะทำอะไรกับสิ่งของนั้นและจะเสีย 1 action รวมถึงการเปลี่ยนแมพ (สามารถดูจำนวนการกดได้ที่ด้านซ้ายบน) Cancel จะไม่เสีย action และสามารถดูของที่อยู่ในตัวได้ที่มุมขวาบน (กดที่กล่องข้อความเพื่อปิด)");
+        game.ui.window.dispose();
+
+        SwingUtilities.invokeLater(() -> {
+            new GameManager();
+        });
     }
 
     public void showGameoverScene() {
