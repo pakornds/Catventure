@@ -9,6 +9,7 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
@@ -34,6 +35,9 @@ import javax.swing.SwingUtilities;
 public class UI {
         GameManager game;
 
+        // title screen
+        String selectedDifficulty;
+
         // game's window
         JFrame window;
 
@@ -42,8 +46,8 @@ public class UI {
         public JTextArea messageText;
 
         // game's backgrounds
-        public JPanel bgPanel[] = new JPanel[15];
-        public JLabel bgLabel[] = new JLabel[15];
+        public JPanel bgPanel[] = new JPanel[20];
+        public JLabel bgLabel[] = new JLabel[20];
 
         // player's ui
         JPanel lifePanel;
@@ -67,11 +71,9 @@ public class UI {
                 createMainField();
                 createTextBox();
 
-                createLifeField();
+                createLifeField(playerMaxAction);
                 createInventoryField();
                 generateScene();
-                // closeTextBox();
-                // openTextBox();
 
                 window.setVisible(true);
         }
@@ -113,6 +115,92 @@ public class UI {
                                 showExitConfirmationDialog();
                         }
                 });
+        }
+
+        private void createTitleScreen() {
+                lifePanel.setVisible(false);
+                closeTextBox();
+                // เพิ่มปุ่มเริ่มเกม
+                JButton startButton = new JButton("Start Game");
+                startButton.setBounds(300, 200, 200, 50);
+                startButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                                // เรียกฟังก์ชันเปลี่ยนหน้าไปยังแมพแรก
+                                switchToGameMap();
+                        }
+                });
+                bgPanel[19].add(startButton);
+
+                // เพิ่มปุ่มตั้งค่าความยาก
+                JButton difficultyButton = new JButton("Difficulty Settings");
+                difficultyButton.setBounds(300, 300, 200, 50);
+                difficultyButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                                // เรียกฟังก์ชันแสดงหน้าต่างตั้งค่าความยาก
+                                showDifficultySettings();
+                        }
+                });
+                bgPanel[19].add(difficultyButton);
+
+                // เพิ่มปุ่มปิดเกม
+                JButton exitButton = new JButton("Exit Game");
+                exitButton.setBounds(300, 400, 200, 50);
+                exitButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                                // ปิดเกม
+                                System.exit(0);
+                        }
+                });
+                bgPanel[19].add(exitButton);
+
+                // เพิ่ม Label หรือ Text แนะนำการเล่นเกม
+                JLabel introductionLabel = new JLabel("Catventure");
+                introductionLabel.setBounds(200, 100, 400, 50);
+                bgPanel[19].add(introductionLabel);
+        }
+
+        private void switchToGameMap() {
+                lifePanel.setVisible(true);
+                openTextBox();
+                bgPanel[19].setVisible(false);
+                bgPanel[0].setVisible(true);
+        }
+
+        private void showDifficultySettings() {
+
+                ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource("resources\\CatFoot.png"));
+                Image image = icon.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
+                icon = new ImageIcon(image);
+
+                // Array of difficulty options
+                String[] difficultyOptions = { "Easy", "Medium", "Hard" };
+
+                // Show a dialog with difficulty options
+                int choice = JOptionPane.showOptionDialog(
+                                window,
+                                "Select Difficulty:",
+                                "Difficulty Settings",
+                                JOptionPane.DEFAULT_OPTION,
+                                JOptionPane.PLAIN_MESSAGE,
+                                icon,
+                                difficultyOptions,
+                                difficultyOptions[0]);
+
+                // Check if a difficulty is selected
+                if (choice >= 0 && choice < difficultyOptions.length) {
+                        // Store the selected difficulty
+                        selectedDifficulty = difficultyOptions[choice];
+
+                        // Perform any additional actions with the selected difficulty
+                        handleSelectedDifficulty(selectedDifficulty);
+                }
+        }
+
+        private void handleSelectedDifficulty(String difficulty) {
+                game.player.updatePlayerDifficulty(difficulty);
         }
 
         // Show a more visually appealing exit confirmation dialog
@@ -299,7 +387,6 @@ public class UI {
                 });
 
                 objectList.add(objLabel);
-                objLabel.setBackground(Color.blue);
 
                 // put the object wanting to overwritten in the bottom
                 bgPanel[bgNum].add(objLabel);
@@ -351,11 +438,17 @@ public class UI {
                 bgPanel[bgNum].add(arrowButton);
         }
 
-        public void createLifeField() {
+        public void createLifeField(int playerAction) {
                 int LIFE_PANEL_X = 30;
                 int LIFE_PANEL_Y = 15;
                 int LIFE_PANEL_WIDTH = 400;
                 int LIFE_PANEL_HEIGHT = 200;
+
+                // Remove existing lifePanel if it exists
+                if (lifePanel != null) {
+                        window.remove(lifePanel);
+                }
+
                 lifePanel = new JPanel();
                 lifePanel.setBounds(LIFE_PANEL_X, LIFE_PANEL_Y, LIFE_PANEL_WIDTH, LIFE_PANEL_HEIGHT);
                 lifePanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
@@ -367,14 +460,24 @@ public class UI {
                 lifeIcon = new ImageIcon(image);
 
                 int i = 0;
-                while (i < playerMaxAction) {
+                System.out.println("max ac: " + playerAction);
+                while (i < playerAction) {
                         lifeLabel.add(new JLabel());
                         lifeLabel.get(i).setIcon(lifeIcon);
+                        lifeLabel.get(i).setVisible(false);
                         lifePanel.add(lifeLabel.get(i));
                         i++;
                 }
-
         }
+
+        // public void removeLifeField() {
+        // for (JLabel label : game.ui.lifeLabel) {
+        // window.remove(label);
+        // }
+        // window.remove(lifePanel);
+        // window.revalidate();
+        // window.repaint();
+        // }
 
         public void createInventoryField() {
                 int INVENTORY_PANEL_X = 1470;
@@ -465,6 +568,11 @@ public class UI {
         // send variables from bg to obj
         public void generateScene() {
 
+                // title screen
+                createBackground(19, "resources\\titleBg.jpg");
+                createTitleScreen();
+                bgPanel[19].add(bgLabel[19]);
+
                 // SCENE 0
 
                 createBackground(0, "resources\\Bedroom\\TheBedroom2.png");
@@ -508,6 +616,7 @@ public class UI {
                                 "moveSheet", "cancel");
 
                 bgPanel[0].add(bgLabel[0]);
+                bgPanel[0].setVisible(false);
 
                 // SCENE 1
 
@@ -560,6 +669,7 @@ public class UI {
                                 "moveRoof", "cancel");
 
                 bgPanel[1].add(bgLabel[1]);
+                bgPanel[1].setVisible(false);
 
                 // SCENE 2
                 createBackground(2, "resources\\Neighborhood\\Background.png");
@@ -594,17 +704,21 @@ public class UI {
                                 "Look", "Move", "Cancel", "lookNbin",
                                 "moveNbin", "cancel");
                 bgPanel[2].add(bgLabel[2]);
+                bgPanel[2].setVisible(false);
 
                 // Bad Ending
                 createBackground(3, "resources\\Ending\\Bad\\1.png");
                 bgPanel[3].add(bgLabel[3]);
                 bgPanel[3].setVisible(false);
+
                 createBackground(4, "resources\\Ending\\Bad\\2.png");
                 bgPanel[4].add(bgLabel[4]);
                 bgPanel[4].setVisible(false);
+
                 createBackground(5, "resources\\Ending\\Bad\\3.png");
                 bgPanel[5].add(bgLabel[5]);
                 bgPanel[5].setVisible(false);
+
                 createBackground(6, "resources\\Ending\\Bad\\4.png");
                 bgPanel[6].add(bgLabel[6]);
                 bgPanel[6].setVisible(false);
@@ -613,6 +727,7 @@ public class UI {
                 createBackground(7, "resources\\Ending\\Late\\1.png");
                 bgPanel[7].add(bgLabel[7]);
                 bgPanel[7].setVisible(false);
+
                 createBackground(8, "resources\\Ending\\Late\\2.png");
                 bgPanel[8].add(bgLabel[8]);
                 bgPanel[8].setVisible(false);
@@ -621,12 +736,15 @@ public class UI {
                 createBackground(9, "resources\\Ending\\Good\\1.png");
                 bgPanel[9].add(bgLabel[9]);
                 bgPanel[9].setVisible(false);
+
                 createBackground(10, "resources\\Ending\\Good\\2.png");
                 bgPanel[10].add(bgLabel[10]);
                 bgPanel[10].setVisible(false);
+
                 createBackground(11, "resources\\Ending\\Good\\3.png");
                 bgPanel[11].add(bgLabel[11]);
                 bgPanel[11].setVisible(false);
+
                 createBackground(12, "resources\\Ending\\Good\\4.png");
                 bgPanel[12].add(bgLabel[12]);
                 bgPanel[12].setVisible(false);
