@@ -100,6 +100,8 @@ public class UI {
                 window.setResizable(false);
                 window.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 window.setUndecorated(true);
+                Image icon = Toolkit.getDefaultToolkit().getImage("resources\\CatFoot.png");
+                window.setIconImage(icon);
 
                 // Add KeyListener to the JFrame
                 // Register Escape key globally

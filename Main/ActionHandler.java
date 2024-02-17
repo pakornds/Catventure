@@ -42,7 +42,7 @@ public class ActionHandler extends UI implements ActionListener {
                     break;
                 case "moveChair":
                     game.ev01.moveChair();
-                    game.ev01.nothingHere();
+                    game.playSoundEffects(12);
                     break;
                 case "lookMovedChair":
                     if (isFirstInteraction(yourChoice)) {
@@ -56,18 +56,21 @@ public class ActionHandler extends UI implements ActionListener {
                     break;
                 case "moveMovedChair":
                     game.ev01.moveMovedChair();
+                    game.playSoundEffects(12);
                     break;
                 case "lookLookedLamp":
                     game.ev01.nothingHere();
                     break;
                 case "moveLookedLamp":
                     game.ev01.moveLookedLamp();
+                    game.playSoundEffects(8);
                     break;
                 case "lookLamp":
                     game.ev01.nothingHere();
                     break;
                 case "moveLamp":
                     game.ev01.moveLamp();
+                    game.playSoundEffects(9);
                     break;
                 case "lookMovedBin":
                     if (isFirstInteraction(yourChoice)) {
@@ -81,30 +84,35 @@ public class ActionHandler extends UI implements ActionListener {
                     break;
                 case "moveMovedBin":
                     game.ev01.moveMovedBin();
+                    game.playSoundEffects(10);
                     break;
                 case "lookBin":
                     game.ev01.nothingHere();
                     break;
                 case "moveBin":
                     game.ev01.moveBin();
+                    game.playSoundEffects(10);
                     break;
                 case "lookMovedCarpet":
                     game.ev01.nothingHere();
                     break;
                 case "moveMovedCarpet":
                     game.ev01.moveMovedCarpet();
+                    game.playSoundEffects(0);
                     break;
                 case "lookCarpet":
                     game.ev01.nothingHere();
                     break;
                 case "moveCarpet":
                     game.ev01.moveCarpet();
+                    game.playSoundEffects(0);
                     break;
                 case "lookMovedBed":
                     game.ev01.nothingHere();
                     break;
                 case "moveMovedSheet":
                     game.ev01.moveMovedSheet();
+                    game.playSoundEffects(0);
                     break;
                 case "lookBed":
                     if (isFirstInteraction(yourChoice)) {
@@ -118,6 +126,7 @@ public class ActionHandler extends UI implements ActionListener {
                     break;
                 case "moveSheet":
                     game.ev01.moveSheet();
+                    game.playSoundEffects(0);
                     break;
 
                 // Map 2
@@ -133,18 +142,21 @@ public class ActionHandler extends UI implements ActionListener {
                     break;
                 case "moveMovedBush":
                     game.ev02.moveMovedBush();
+                    game.playSoundEffects(2);
                     break;
                 case "lookBush":
                     game.ev02.nothingHere();
                     break;
                 case "moveBush":
                     game.ev02.moveBush();
+                    game.playSoundEffects(2);
                     break;
                 case "lookLookedPalm":
                     game.ev02.nothingHere();
                     break;
                 case "moveMovedPalm":
                     game.ev02.moveMovedPalm();
+                    game.playSoundEffects(13);
                     break;
                 case "lookPalm":
                     if (isFirstInteraction(yourChoice)) {
@@ -158,30 +170,35 @@ public class ActionHandler extends UI implements ActionListener {
                     break;
                 case "movePalm":
                     game.ev02.movePalm();
+                    game.playSoundEffects(13);
                     break;
                 case "lookMovedWindow2":
                     game.ev02.nothingHere();
                     break;
                 case "moveMovedWindow2":
                     game.ev02.moveMovedWindow2();
+                    game.playSoundEffects(14);
                     break;
                 case "lookWindow2":
                     game.ev02.nothingHere();
                     break;
                 case "moveWindow2":
                     game.ev02.moveWindow2();
+                    game.playSoundEffects(14);
                     break;
                 case "lookMovedWindow":
                     game.ev02.nothingHere();
                     break;
                 case "moveMovedWindow":
                     game.ev02.moveMovedWindow();
+                    game.playSoundEffects(15);
                     break;
                 case "lookWindow":
                     game.ev02.nothingHere();
                     break;
                 case "moveWindow":
                     game.ev02.moveWindow();
+                    game.playSoundEffects(15);
                     break;
                 case "lookMovedRoof":
                     if (isFirstInteraction(yourChoice)) {
@@ -195,12 +212,14 @@ public class ActionHandler extends UI implements ActionListener {
                     }
                 case "moveMovedRoof":
                     game.ev02.moveMovedRoof();
+                    game.playSoundEffects(11);
                     break;
                 case "lookRoof":
                     game.ev02.nothingHere();
                     break;
                 case "moveRoof":
                     game.ev02.moveRoof();
+                    game.playSoundEffects(11);
                     break;
 
                 // Map 3
@@ -209,18 +228,21 @@ public class ActionHandler extends UI implements ActionListener {
                     break;
                 case "moveLookedBox":
                     game.ev03.moveLookedBox();
+                    game.playSoundEffects(5);
                     break;
                 case "lookBox":
                     game.ev03.nothingHere();
                     break;
                 case "moveBox":
                     game.ev03.moveBox();
+                    game.playSoundEffects(6);
                     break;
                 case "lookMovedCar":
                     game.ev03.nothingHere();
                     break;
                 case "moveMovedCar":
                     game.ev03.moveMovedCar();
+                    game.playSoundEffects(4);
                     break;
                 case "lookCar":
                     if (isFirstInteraction(yourChoice)) {
@@ -235,12 +257,14 @@ public class ActionHandler extends UI implements ActionListener {
                     break;
                 case "moveCar":
                     game.ev03.moveCar();
+                    game.playSoundEffects(3);
                     break;
                 case "lookMovedNbin":
                     game.ev03.nothingHere();
                     break;
                 case "moveMovedNbin":
                     game.ev03.moveMovedNbin();
+                    game.playSoundEffects(1);
                     break;
                 case "lookNbin":
                     if (isFirstInteraction(yourChoice)) {
@@ -255,6 +279,7 @@ public class ActionHandler extends UI implements ActionListener {
                     break;
                 case "moveNbin":
                     game.ev03.moveNbin();
+                    game.playSoundEffects(1);
                     break;
                 case "lookCat":
                     if (game.player.hasCatHair && game.player.hasScratchMark) {
