@@ -3,7 +3,6 @@ package Main;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 public class SceneChanger {
@@ -41,10 +40,7 @@ public class SceneChanger {
         game.ui.window.dispose();
         game.stopMusic();
 
-        SwingUtilities.invokeLater(() -> {
-            game.playMusic();
-            new GameManager();
-        });
+        new GameManager();
     }
 
     public void showGameoverScene() {
