@@ -588,10 +588,10 @@ public class UI {
                 createChangeMapBtn(0, 0, 0, 100, 100, "goScene1", "resources\\arrowLeft.png", false);
 
                 // CHAIR
-                createObject(0, 550, 380, 260, 390, "resources\\Bedroom\\movedChair.png", "Look", "Move", "Cancel",
+                createObject(0, 550, 380, 260, 390, "resources\\HD_transparent_picture.png", "Look", "Move", "Cancel",
                                 "lookMovedChair", "moveMovedChair", "cancel");
                 hideObject(0);
-                createObject(0, 550, 380, 260, 390, "resources\\Bedroom\\chair.png", "Look", "Move", "Cancel",
+                createObject(0, 550, 380, 260, 390, "resources\\HD_transparent_picture.png", "Look", "Move", "Cancel",
                                 "lookChair",
                                 "moveChair", "cancel");
 
