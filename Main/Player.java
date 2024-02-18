@@ -2,6 +2,10 @@ package Main;
 
 import javax.swing.JLabel;
 
+/**
+ * The Player class represents a player in the game.
+ * It keeps track of the player's actions, items, and status.
+ */
 public class Player {
     GameManager game;
 
@@ -17,10 +21,21 @@ public class Player {
     public boolean hasPaws;
     public boolean hasNettle;
 
+    /**
+     * Constructs a Player object with the specified GameManager.
+     * 
+     * @param game the GameManager object associated with the player
+     */
     public Player(GameManager game) {
         this.game = game;
     }
 
+    /**
+     * Sets the player's default status.
+     * The player's maximum action count is set based on the game's UI.
+     * All item flags are set to false.
+     * The player's status is updated.
+     */
     public void setPlayerDefaultStatus() {
         playerMaxAction = game.ui.playerMaxAction;
         playerAction = playerMaxAction;
@@ -37,6 +52,14 @@ public class Player {
         updatePlayerStatus();
     }
 
+    /**
+     * Updates the player's difficulty level and action count based on the specified
+     * difficulty.
+     * The player's status is updated.
+     * 
+     * @param difficulty the difficulty level ("Easy", "Medium", or "Hard")
+     * @return the updated player's action count
+     */
     public int updatePlayerDifficulty(String difficulty) {
         if (difficulty.equals("Easy")) {
             playerAction = 30;
@@ -52,6 +75,10 @@ public class Player {
         return playerAction;
     }
 
+    /**
+     * Updates the player's status based on the current action count.
+     * The life labels in the game's UI are updated accordingly.
+     */
     public void updatePlayerStatus() {
 
         for (JLabel label : game.ui.lifeLabel) {
