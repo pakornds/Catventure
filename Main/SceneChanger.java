@@ -39,8 +39,10 @@ public class SceneChanger {
 
     public void showTitleScreen() {
         game.ui.window.dispose();
+        game.stopMusic();
 
         SwingUtilities.invokeLater(() -> {
+            game.playMusic();
             new GameManager();
         });
     }

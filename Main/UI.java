@@ -163,6 +163,7 @@ public class UI {
         }
 
         private void switchToGameMap() {
+                game.playMusic();
                 lifePanel.setVisible(true);
                 openTextBox();
                 bgPanel[19].setVisible(false);
