@@ -584,7 +584,7 @@ public class UI {
 
                 // SCENE 0
 
-                createBackground(0, "resources\\Bedroom\\TheBedroom2.png");
+                createBackground(0, "resources\\Bedroom\\FullBed.png");
                 createChangeMapBtn(0, 0, 0, 100, 100, "goScene1", "resources\\arrowLeft.png", false);
 
                 // CHAIR
@@ -629,7 +629,7 @@ public class UI {
 
                 // SCENE 1
 
-                createBackground(1, "resources\\House\\House.png");
+                createBackground(1, "resources\\House\\FullHouse.png");
                 createChangeMapBtn(1, 0, 0, 100, 100, "goScene2",
                                 "resources\\arrowLeft.png", false);
                 createChangeMapBtn(1, 0, 0, 100, 100, "goScene0",
@@ -681,7 +681,7 @@ public class UI {
                 bgPanel[1].setVisible(false);
 
                 // SCENE 2
-                createBackground(2, "resources\\Neighborhood\\Background.png");
+                createBackground(2, "resources\\Neighborhood\\FullNeighborhood.png");
                 createChangeMapBtn(2, 0, 0, 100, 100, "goScene1",
                                 "resources\\arrowRight.png", true);
                 createObject(2, 870, 310, 100, 100, "resources\\Neighborhood\\BiggerCat.png",
