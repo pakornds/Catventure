@@ -755,7 +755,7 @@ public class UI {
                 "Look", "Close window", "Cancel",
                 "lookMovedWindow2", "moveMovedWindow2", "cancel");
         createObject(1, 900, 330, 280, 200, "resources\\HD_transparent_picture.png", "Look",
-                "Open", "Open window", "lookWindow2",
+                "Open window", "Cancel", "lookWindow2",
                 "moveWindow2", "cancel");
 
         createObject(1, 882, 223, 1070, 425, "resources\\House\\movedWindow2.png");
