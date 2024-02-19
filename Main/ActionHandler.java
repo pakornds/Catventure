@@ -28,7 +28,6 @@ public class ActionHandler extends UI implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String yourChoice = e.getActionCommand();
-        System.out.println(yourChoice);
         try {
             switch (yourChoice) {
                 case "cancel":
