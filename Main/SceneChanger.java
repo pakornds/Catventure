@@ -45,6 +45,10 @@ public class SceneChanger {
         game.ui.window.dispose();
         game.stopMusic();
 
+        game = null; // Dereference the game object
+
+        System.gc(); // Suggest JVM to run garbage collector
+
         //
         SwingUtilities.invokeLater(() -> {
             new GameManager();
