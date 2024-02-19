@@ -58,6 +58,7 @@ public class SceneChanger {
                 game.music.stop();
                 game.ui.bgPanel[7].setVisible(true);
                 game.ui.bgPanel[8].setVisible(false);
+                game.ui.bgPanel[17].setVisible(false);
 
                 // Start the next timer within this ActionListener
                 Timer timer2 = new Timer(5000, new ActionListener() {
@@ -65,12 +66,25 @@ public class SceneChanger {
                     public void actionPerformed(ActionEvent e) {
                         game.ui.bgPanel[7].setVisible(false);
                         game.ui.bgPanel[8].setVisible(true);
+                        game.ui.bgPanel[17].setVisible(false);
 
                         // Start the third timer within this ActionListener
                         Timer timer3 = new Timer(6000, new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
-                                showTitleScreen();
+
+                                game.ui.bgPanel[7].setVisible(false);
+                                game.ui.bgPanel[8].setVisible(false);
+                                game.ui.bgPanel[17].setVisible(true);
+                                Timer timer3 = new Timer(6000, new ActionListener() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent e) {
+                                        showTitleScreen();
+                                    }
+                                });
+
+                                timer3.setRepeats(false);
+                                timer3.start();
                             }
                         });
 
@@ -105,6 +119,7 @@ public class SceneChanger {
                 game.ui.bgPanel[4].setVisible(false);
                 game.ui.bgPanel[5].setVisible(false);
                 game.ui.bgPanel[6].setVisible(false);
+                game.ui.bgPanel[14].setVisible(false);
                 Timer timer2 = new Timer(4000, new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -112,6 +127,7 @@ public class SceneChanger {
                         game.ui.bgPanel[4].setVisible(true);
                         game.ui.bgPanel[5].setVisible(false);
                         game.ui.bgPanel[6].setVisible(false);
+                        game.ui.bgPanel[14].setVisible(false);
 
                         Timer timer3 = new Timer(4000, new ActionListener() {
                             @Override
@@ -120,6 +136,7 @@ public class SceneChanger {
                                 game.ui.bgPanel[4].setVisible(false);
                                 game.ui.bgPanel[5].setVisible(true);
                                 game.ui.bgPanel[6].setVisible(false);
+                                game.ui.bgPanel[14].setVisible(false);
 
                                 Timer timer4 = new Timer(4000, new ActionListener() {
                                     @Override
@@ -128,11 +145,27 @@ public class SceneChanger {
                                         game.ui.bgPanel[4].setVisible(false);
                                         game.ui.bgPanel[5].setVisible(false);
                                         game.ui.bgPanel[6].setVisible(true);
+                                        game.ui.bgPanel[14].setVisible(false);
 
                                         Timer timer5 = new Timer(6000, new ActionListener() {
                                             @Override
                                             public void actionPerformed(ActionEvent e) {
-                                                showTitleScreen();
+
+                                                game.ui.bgPanel[3].setVisible(false);
+                                                game.ui.bgPanel[4].setVisible(false);
+                                                game.ui.bgPanel[5].setVisible(false);
+                                                game.ui.bgPanel[6].setVisible(false);
+                                                game.ui.bgPanel[14].setVisible(true);
+
+                                                Timer timer5 = new Timer(6000, new ActionListener() {
+                                                    @Override
+                                                    public void actionPerformed(ActionEvent e) {
+                                                        showTitleScreen();
+                                                    }
+                                                });
+
+                                                timer5.setRepeats(false);
+                                                timer5.start();
                                             }
                                         });
 
@@ -178,6 +211,7 @@ public class SceneChanger {
                 game.ui.bgPanel[10].setVisible(false);
                 game.ui.bgPanel[11].setVisible(false);
                 game.ui.bgPanel[12].setVisible(false);
+                game.ui.bgPanel[15].setVisible(false);
                 Timer timer2 = new Timer(4000, new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -185,7 +219,7 @@ public class SceneChanger {
                         game.ui.bgPanel[10].setVisible(true);
                         game.ui.bgPanel[11].setVisible(false);
                         game.ui.bgPanel[12].setVisible(false);
-
+                        game.ui.bgPanel[15].setVisible(false);
                         Timer timer3 = new Timer(4000, new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
@@ -193,7 +227,7 @@ public class SceneChanger {
                                 game.ui.bgPanel[10].setVisible(false);
                                 game.ui.bgPanel[11].setVisible(true);
                                 game.ui.bgPanel[12].setVisible(false);
-
+                                game.ui.bgPanel[15].setVisible(false);
                                 Timer timer4 = new Timer(4000, new ActionListener() {
                                     @Override
                                     public void actionPerformed(ActionEvent e) {
@@ -201,11 +235,24 @@ public class SceneChanger {
                                         game.ui.bgPanel[10].setVisible(false);
                                         game.ui.bgPanel[11].setVisible(false);
                                         game.ui.bgPanel[12].setVisible(true);
-
+                                        game.ui.bgPanel[15].setVisible(false);
                                         Timer timer5 = new Timer(6000, new ActionListener() {
                                             @Override
                                             public void actionPerformed(ActionEvent e) {
-                                                showTitleScreen();
+                                                game.ui.bgPanel[9].setVisible(false);
+                                                game.ui.bgPanel[10].setVisible(false);
+                                                game.ui.bgPanel[11].setVisible(false);
+                                                game.ui.bgPanel[12].setVisible(false);
+                                                game.ui.bgPanel[15].setVisible(true);
+                                                Timer timer5 = new Timer(6000, new ActionListener() {
+                                                    @Override
+                                                    public void actionPerformed(ActionEvent e) {
+                                                        showTitleScreen();
+                                                    }
+                                                });
+
+                                                timer5.setRepeats(false);
+                                                timer5.start();
                                             }
                                         });
 
@@ -251,6 +298,7 @@ public class SceneChanger {
                 game.ui.bgPanel[13].setVisible(false);
                 game.ui.bgPanel[11].setVisible(false);
                 game.ui.bgPanel[12].setVisible(false);
+                game.ui.bgPanel[16].setVisible(false);
                 Timer timer2 = new Timer(4000, new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -258,6 +306,7 @@ public class SceneChanger {
                         game.ui.bgPanel[13].setVisible(true);
                         game.ui.bgPanel[11].setVisible(false);
                         game.ui.bgPanel[12].setVisible(false);
+                        game.ui.bgPanel[16].setVisible(false);
 
                         Timer timer3 = new Timer(4000, new ActionListener() {
                             @Override
@@ -266,6 +315,7 @@ public class SceneChanger {
                                 game.ui.bgPanel[13].setVisible(false);
                                 game.ui.bgPanel[11].setVisible(true);
                                 game.ui.bgPanel[12].setVisible(false);
+                                game.ui.bgPanel[16].setVisible(false);
 
                                 Timer timer4 = new Timer(4000, new ActionListener() {
                                     @Override
@@ -274,11 +324,25 @@ public class SceneChanger {
                                         game.ui.bgPanel[13].setVisible(false);
                                         game.ui.bgPanel[11].setVisible(false);
                                         game.ui.bgPanel[12].setVisible(true);
+                                        game.ui.bgPanel[16].setVisible(false);
 
                                         Timer timer5 = new Timer(6000, new ActionListener() {
                                             @Override
                                             public void actionPerformed(ActionEvent e) {
-                                                showTitleScreen();
+                                                game.ui.bgPanel[9].setVisible(false);
+                                                game.ui.bgPanel[13].setVisible(false);
+                                                game.ui.bgPanel[11].setVisible(false);
+                                                game.ui.bgPanel[12].setVisible(false);
+                                                game.ui.bgPanel[16].setVisible(true);
+                                                Timer timer5 = new Timer(6000, new ActionListener() {
+                                                    @Override
+                                                    public void actionPerformed(ActionEvent e) {
+                                                        showTitleScreen();
+                                                    }
+                                                });
+
+                                                timer5.setRepeats(false);
+                                                timer5.start();
                                             }
                                         });
 

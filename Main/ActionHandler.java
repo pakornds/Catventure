@@ -240,7 +240,7 @@ public class ActionHandler extends UI implements ActionListener {
                     game.ev03.nothingHere();
                     break;
                 case "moveMovedCar":
-                    game.ev03.moveMovedCar();
+                    game.ev03.moveCar();
                     game.playSoundEffects(4);
                     break;
                 case "lookCar":

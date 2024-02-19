@@ -649,9 +649,9 @@ public class UI {
         createChangeMapBtn(0, 0, 0, 100, 100, "goScene1", "resources\\arrowLeft.png", false);
 
         // CHAIR
-        createObject(0, 560, 380, 240, 390, "resources\\HD_transparent_picture.png", "Look", "Move", "Cancel",
+        createObject(0, 560, 380, 240, 390, "resources\\HD_transparent_picture.png", "Look", "Move back", "Cancel",
                 "lookMovedChair", "moveMovedChair", "cancel");
-        createObject(0, 560, 380, 240, 390, "resources\\HD_transparent_picture.png", "Look", "Move", "Cancel",
+        createObject(0, 560, 380, 240, 390, "resources\\HD_transparent_picture.png", "Look", "Move out", "Cancel",
                 "lookChair",
                 "moveChair", "cancel");
 
@@ -662,9 +662,9 @@ public class UI {
         hideObject(2);
 
         // LAMP
-        createObject(0, 860, 200, 160, 350, "resources\\HD_transparent_picture.png", "Look", "Close", "Cancel",
+        createObject(0, 910, 210, 110, 330, "resources\\HD_transparent_picture.png", "Look", "Close lamp", "Cancel",
                 "lookLookedLamp", "moveLookedLamp", "cancel");
-        createObject(0, 860, 200, 160, 350, "resources\\HD_transparent_picture.png", "Look", "Open", "Cancel",
+        createObject(0, 910, 210, 110, 330, "resources\\HD_transparent_picture.png", "Look", "Open lamp", "Cancel",
                 "lookLamp",
                 "moveLamp", "cancel");
 
@@ -675,9 +675,9 @@ public class UI {
         hideObject(6);
 
         // BEDROOM BIN
-        createObject(0, 300, 860, 220, 220, "resources\\HD_transparent_picture.png", "Look", "Move", "Cancel",
+        createObject(0, 300, 860, 220, 220, "resources\\HD_transparent_picture.png", "Look", "Turn down", "Cancel",
                 "lookMovedBin", "moveMovedBin", "cancel");
-        createObject(0, 300, 860, 220, 220, "resources\\HD_transparent_picture.png", "Look", "Move", "Cancel", "lookBin",
+        createObject(0, 300, 860, 220, 220, "resources\\HD_transparent_picture.png", "Look", "Turn up", "Cancel", "lookBin",
                 "moveBin", "cancel");
 
         createObject(0, 300, 850, 231, 240, "resources\\Bedroom\\movedBin.png");
@@ -688,9 +688,9 @@ public class UI {
 
         // Carpet
         createObject(0, 820, 780, 530, 280, "resources\\HD_transparent_picture.png", "Look",
-                "Move", "Cancel", "lookMovedCarpet", "moveMovedCarpet", "cancel");
+                "Move carpet back", "Cancel", "lookMovedCarpet", "moveMovedCarpet", "cancel");
         createObject(0, 820, 780, 530, 280, "resources\\HD_transparent_picture.png", "Look",
-                "Move", "Cancel", "lookCarpet", "moveCarpet", "cancel");
+                "Move carpet up", "Cancel", "lookCarpet", "moveCarpet", "cancel");
 
         createObject(0, 725, 717, 760, 365, "resources\\Bedroom\\movedCarpet.png");
         createObject(0, 725, 717, 760, 365, "resources\\Bedroom\\Carpet.png");
@@ -699,9 +699,9 @@ public class UI {
         hideObject(14);
 
         // Bed
-        createObject(0, 1200, 500, 400, 230, "resources\\HD_transparent_picture.png", "Look", "Move", "Cancel",
+        createObject(0, 1200, 500, 400, 230, "resources\\HD_transparent_picture.png", "Look", "Close blanket", "Cancel",
                 "lookMovedBed", "moveMovedSheet", "cancel");
-        createObject(0, 1200, 500, 400, 230, "resources\\HD_transparent_picture.png", "Look", "Move", "Cancel", "lookBed",
+        createObject(0, 1200, 500, 400, 230, "resources\\HD_transparent_picture.png", "Look", "Open blanket", "Cancel", "lookBed",
                 "moveSheet", "cancel");
 
         createObject(0, 1050, 350, 880, 600, "resources\\Bedroom\\movedBed.png");
@@ -724,10 +724,10 @@ public class UI {
 
         // Bush
         createObject(1, 0, 520, 400, 500, "resources\\HD_transparent_picture.png", "Look",
-                "Move", "Cancel", "lookMovedBush",
+                "Emerge bush", "Cancel", "lookMovedBush",
                 "moveMovedBush", "cancel");
         createObject(1, 0, 520, 400, 500, "resources\\HD_transparent_picture.png", "Look",
-                "Move", "Cancel", "lookBush",
+                "Part bush", "Cancel", "lookBush",
                 "moveBush", "cancel");
 
         createObject(1, 0, 500, 410, 550, "resources\\House\\movedBush.png");
@@ -738,10 +738,10 @@ public class UI {
 //
 // Palm tree
         createObject(1, 1450, 70, 200, 700, "resources\\HD_transparent_picture.png", "Look",
-                "Climb down", "Cancel", "lookLookedPalm",
+                "Climb down tree", "Cancel", "lookLookedPalm",
                 "moveMovedPalm", "cancel");
         createObject(1, 1450, 70, 200, 700, "resources\\HD_transparent_picture.png", "Look",
-                "Climb up", "Cancel", "lookPalm",
+                "Climb up tree", "Cancel", "lookPalm",
                 "movePalm", "cancel");
 
         createObject(1, 1290, 0, 590, 800, "resources\\House\\lookedPalm.png");
@@ -752,10 +752,10 @@ public class UI {
 //
 // Window2
         createObject(1, 900, 330, 280, 200, "resources\\HD_transparent_picture.png",
-                "Look", "Close", "Cancel",
+                "Look", "Close window", "Cancel",
                 "lookMovedWindow2", "moveMovedWindow2", "cancel");
         createObject(1, 900, 330, 280, 200, "resources\\HD_transparent_picture.png", "Look",
-                "Open", "Cancel", "lookWindow2",
+                "Open", "Open window", "lookWindow2",
                 "moveWindow2", "cancel");
 
         createObject(1, 882, 223, 1070, 425, "resources\\House\\movedWindow2.png");
@@ -766,10 +766,10 @@ public class UI {
 
 // Window
         createObject(1, 475, 547, 390, 240, "resources\\HD_transparent_picture.png", "Look",
-                "Close", "Cancel", "lookMovedWindow",
+                "Close window", "Cancel", "lookMovedWindow",
                 "moveMovedWindow", "cancel");
         createObject(1, 475, 547, 390, 240, "resources\\HD_transparent_picture.png", "Look",
-                "Open", "Cancel", "lookWindow",
+                "Open window", "Cancel", "lookWindow",
                 "moveWindow", "cancel");
 
         createObject(1, 475, 547, 390, 240, "resources\\House\\movedWindow.png");
@@ -779,11 +779,11 @@ public class UI {
         hideObject(34);
 //
 // Roof
-        createObject(1, 363, 119, 1070, 425, "resources\\HD_transparent_picture.png", "Look",
-                "Climb down", "Cancel", "lookMovedRoof",
+        createObject(1, 750, 200, 500, 100, "resources\\HD_transparent_picture.png", "Look",
+                "Climb down roof", "Cancel", "lookMovedRoof",
                 "moveMovedRoof", "cancel");
-        createObject(1, 363, 119, 1070, 425, "resources\\HD_transparent_picture.png", "Look",
-                "Climb up", "Cancel", "lookRoof",
+        createObject(1, 750, 200, 500, 100, "resources\\HD_transparent_picture.png", "Look",
+                "Climb up roof", "Cancel", "lookRoof",
                 "moveRoof", "cancel");
 
         createObject(1, 363, 119, 1070, 425, "resources\\House\\lookedRoof.png");
@@ -801,17 +801,17 @@ public class UI {
                 "resources\\arrowRight.png", true);
 
         createObject(2, 890, 340, 60, 40, "resources\\HD_transparent_picture.png",
-                "Look", "Touch",
+                "Look", "Catch",
                 "Cancel", "lookCat", "touchCat", "cancel");
 
         createObject(2, 870, 310, 100, 100, "resources\\Neighborhood\\BiggerCat.png");
 
 // Box
         createObject(2, 1110, 555, 180, 165,
-                "resources\\HD_transparent_picture.png", "Look", "Move", "Cancel",
+                "resources\\HD_transparent_picture.png", "Look", "Close box", "Cancel",
                 "lookLookedBox", "moveLookedBox", "cancel");
         createObject(2, 1110, 555, 180, 165, "resources\\HD_transparent_picture.png",
-                "Look", "Move", "Cancel", "lookBox",
+                "Look", "Open box", "Cancel", "lookBox",
                 "moveBox", "cancel");
         createObject(2, 1075, 550, 245, 175, "resources\\Neighborhood\\lookedBox.png");
         createObject(2, 1075, 550, 245, 175, "resources\\Neighborhood\\Box.png");
@@ -820,9 +820,9 @@ public class UI {
 
 // Car
         createObject(2, 1168, 233, 500, 320, "resources\\HD_transparent_picture.png",
-                "Look", "Move", "Cancel", "lookMovedCar", "moveMovedCar", "cancel");
+                "Look", "Get im", "Cancel", "lookMovedCar", "moveMovedCar", "cancel");
         createObject(2, 1168, 233, 500, 320, "resources\\HD_transparent_picture.png",
-                "Look", "Move", "Cancel", "lookCar", "moveCar", "cancel");
+                "Look", "Get in", "Cancel", "lookCar", "moveCar", "cancel");
         createObject(2, 1168, 233, 500, 320, "resources\\Neighborhood\\Car.png");
         createObject(2, 1168, 233, 500, 320, "resources\\Neighborhood\\Car.png");
         hideObject(46);
@@ -830,10 +830,10 @@ public class UI {
 //
 // Bin
         createObject(2, 450, 400, 350, 335, "resources\\HD_transparent_picture.png",
-                "Look", "Move", "Cancel",
+                "Look", "Close trash can", "Cancel",
                 "lookMovedNbin", "moveMovedNbin", "cancel");
         createObject(2, 450, 350, 275, 395, "resources\\HD_transparent_picture.png",
-                "Look", "Move", "Cancel", "lookNbin",
+                "Look", "Open trash can", "Cancel", "lookNbin",
                 "moveNbin", "cancel");
         createObject(2, 450, 350, 275, 397, "resources\\Neighborhood\\movedBin.png");
         createObject(2, 450, 350, 275, 397, "resources\\Neighborhood\\Bin.png");
@@ -890,5 +890,21 @@ public class UI {
         createBackground(13, "resources\\Ending\\Happy\\2.png");
         bgPanel[13].add(bgLabel[13]);
         bgPanel[13].setVisible(false);
+
+        createBackground(14, "resources\\Ending\\Bad\\5.png");
+        bgPanel[14].add(bgLabel[14]);
+        bgPanel[14].setVisible(false);
+
+        createBackground(15, "resources\\Ending\\Good\\5.png");
+        bgPanel[15].add(bgLabel[15]);
+        bgPanel[15].setVisible(false);
+
+        createBackground(16, "resources\\Ending\\Happy\\5.png");
+        bgPanel[16].add(bgLabel[16]);
+        bgPanel[16].setVisible(false);
+
+        createBackground(17, "resources\\Ending\\Late\\3.png");
+        bgPanel[17].add(bgLabel[17]);
+        bgPanel[17].setVisible(false);
     }
 }

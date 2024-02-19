@@ -101,6 +101,7 @@ public class Event03 {
     public void touchCatSure() {
         game.ui.messageText.setText("เจอแมวแล้ว!");
         game.ui.openTextBox();
+        game.sceneChanger.showHappyEndScene();
     }
 
     public void cancel() {
