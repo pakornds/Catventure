@@ -24,24 +24,32 @@ public class Event01 {
         game.ui.messageText.repaint();
     }
 
-    public void moveChair() {
-        game.ui.hideObject(1);
-        game.ui.showObject(0);
-    }
-
     public void moveMovedChair() {
         game.ui.hideObject(0);
         game.ui.showObject(1);
+        game.ui.hideObject(2);
+        game.ui.showObject(3);
     }
 
-    public void moveLamp() {
+    public void moveChair() {
+        game.ui.hideObject(1);
+        game.ui.showObject(0);
         game.ui.hideObject(3);
         game.ui.showObject(2);
     }
 
+    public void moveLamp() {
+        game.ui.hideObject(5);
+        game.ui.showObject(4);
+        game.ui.hideObject(7);
+        game.ui.showObject(6);
+    }
+
     public void moveLookedLamp() {
-        game.ui.hideObject(2);
-        game.ui.showObject(3);
+        game.ui.hideObject(4);
+        game.ui.showObject(5);
+        game.ui.hideObject(6);
+        game.ui.showObject(7);
     }
 
     public void lookMovedBin() {
@@ -52,23 +60,31 @@ public class Event01 {
     }
 
     public void moveMovedBin() {
-        game.ui.hideObject(4);
-        game.ui.showObject(5);
+        game.ui.hideObject(8);
+        game.ui.showObject(9);
+        game.ui.hideObject(10);
+        game.ui.showObject(11);
     }
 
     public void moveBin() {
-        game.ui.hideObject(5);
-        game.ui.showObject(4);
+        game.ui.hideObject(9);
+        game.ui.showObject(8);
+        game.ui.hideObject(11);
+        game.ui.showObject(10);
     }
 
     public void moveMovedCarpet() {
-        game.ui.hideObject(6);
-        game.ui.showObject(7);
+        game.ui.hideObject(12);
+        game.ui.showObject(13);
+        game.ui.hideObject(14);
+        game.ui.showObject(15);
     }
 
     public void moveCarpet() {
-        game.ui.hideObject(7);
-        game.ui.showObject(6);
+        game.ui.hideObject(13);
+        game.ui.showObject(12);
+        game.ui.hideObject(15);
+        game.ui.showObject(14);
     }
 
     public void lookMovedBed() {
@@ -79,14 +95,18 @@ public class Event01 {
         game.ui.messageText.repaint();
     }
 
-    public void moveSheet() {
-        game.ui.hideObject(9);
-        game.ui.showObject(8);
+    public void moveMovedSheet() {
+        game.ui.hideObject(16);
+        game.ui.showObject(17);
+        game.ui.hideObject(18);
+        game.ui.showObject(19);
     }
 
-    public void moveMovedSheet() {
-        game.ui.hideObject(8);
-        game.ui.showObject(9);
+    public void moveSheet() {
+        game.ui.hideObject(17);
+        game.ui.showObject(16);
+        game.ui.hideObject(19);
+        game.ui.showObject(18);
     }
 
     public void cancel() {
