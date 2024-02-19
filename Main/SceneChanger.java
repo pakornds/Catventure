@@ -1,6 +1,7 @@
 package Main;
 
 import javax.swing.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -35,11 +36,19 @@ public class SceneChanger {
         game.ui.openTextBox();
     }
 
+    // it's a good practice to use SwingUtilities.invokeLater to ensure that those
+    // operations are performed on the EDT. This helps avoid potential concurrency
+    // issues and ensures the proper functioning of the Swing components.
+    // Event Dispatch Thread (EDT) to ensure thread safety.
+
     public void showTitleScreen() {
         game.ui.window.dispose();
         game.stopMusic();
 
-        new GameManager();
+        //
+        SwingUtilities.invokeLater(() -> {
+            new GameManager();
+        });
     }
 
     public void showGameoverScene() {

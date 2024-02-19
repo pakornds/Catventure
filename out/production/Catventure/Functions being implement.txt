@@ -1,7 +1,0 @@
-adding action handling
-dummy objs and its handling
-obj can be move back and forth
-looking at object before being moved and after is different
-endings scenes
-
-difficulty level
