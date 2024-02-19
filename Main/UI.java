@@ -296,7 +296,7 @@ public class UI {
         // load custom font
         try {
             // Load the TTF file
-            File fontFile = new File("resources\\Font\\LAYIJIMAHANIYOMV1.TTF");
+            File fontFile = new File("resources\\Font\\FC Iconic Bold.otf");
             Font customFont = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 
             // Register the font with the GraphicsEnvironment
@@ -801,7 +801,7 @@ public class UI {
                 "resources\\arrowRight.png", true);
 
         createObject(2, 890, 340, 60, 40, "resources\\HD_transparent_picture.png",
-                "Look", "Catch",
+                "Check", "Catch",
                 "Cancel", "lookCat", "touchCat", "cancel");
 
         createObject(2, 870, 310, 100, 100, "resources\\Neighborhood\\BiggerCat.png");
