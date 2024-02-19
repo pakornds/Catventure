@@ -1,17 +1,14 @@
 package Main;
 
-import javax.swing.JLabel;
+import javax.swing.*;
 
 /**
  * The Player class represents a player in the game.
  * It keeps track of the player's actions, items, and status.
  */
 public class Player {
-    GameManager game;
-
     public int playerMaxAction;
     public int playerAction;
-
     public boolean hasCatHair;
     public boolean hasScratchMark;
     public boolean hasToy;
@@ -20,10 +17,11 @@ public class Player {
     public boolean hasCollar;
     public boolean hasPaws;
     public boolean hasNettle;
+    GameManager game;
 
     /**
      * Constructs a Player object with the specified GameManager.
-     * 
+     *
      * @param game the GameManager object associated with the player
      */
     public Player(GameManager game) {
@@ -56,17 +54,17 @@ public class Player {
      * Updates the player's difficulty level and action count based on the specified
      * difficulty.
      * The player's status is updated.
-     * 
+     *
      * @param difficulty the difficulty level ("Easy", "Medium", or "Hard")
      * @return the updated player's action count
      */
     public int updatePlayerDifficulty(String difficulty) {
         if (difficulty.equals("Easy")) {
-            playerAction = 30;
+            playerAction = 32;
         } else if (difficulty.equals("Medium")) {
-            playerAction = 20;
+            playerAction = 22;
         } else if (difficulty.equals("Hard")) {
-            playerAction = 10;
+            playerAction = 12;
         }
         // game.ui.removeLifeField();
         // game.ui.createLifeField(playerMaxAction);
@@ -88,7 +86,7 @@ public class Player {
         int actionCount = playerAction - 1;
 
         // check for game over
-        if (actionCount < 0) {
+        if (actionCount < -1) {
             game.sceneChanger.showGameoverScene();
         }
 

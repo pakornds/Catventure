@@ -37,7 +37,7 @@ public class UI {
     public UI(GameManager game) {
 
         this.game = game;
-        playerMaxAction = 30;
+        playerMaxAction = 32;
 
         createMainField();
         createTextBox();
@@ -886,5 +886,9 @@ public class UI {
         createBackground(12, "resources\\Ending\\Good\\4.png");
         bgPanel[12].add(bgLabel[12]);
         bgPanel[12].setVisible(false);
+
+        createBackground(13, "resources\\Ending\\Happy\\2.png");
+        bgPanel[13].add(bgLabel[13]);
+        bgPanel[13].setVisible(false);
     }
 }

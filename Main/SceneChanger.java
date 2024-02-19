@@ -1,9 +1,8 @@
 package Main;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.Timer;
 
 public class SceneChanger {
     GameManager game;
@@ -200,6 +199,79 @@ public class SceneChanger {
                                     public void actionPerformed(ActionEvent e) {
                                         game.ui.bgPanel[9].setVisible(false);
                                         game.ui.bgPanel[10].setVisible(false);
+                                        game.ui.bgPanel[11].setVisible(false);
+                                        game.ui.bgPanel[12].setVisible(true);
+
+                                        Timer timer5 = new Timer(6000, new ActionListener() {
+                                            @Override
+                                            public void actionPerformed(ActionEvent e) {
+                                                showTitleScreen();
+                                            }
+                                        });
+
+                                        timer5.setRepeats(false);
+                                        timer5.start();
+                                    }
+                                });
+
+                                timer4.setRepeats(false);
+                                timer4.start();
+                            }
+                        });
+
+                        timer3.setRepeats(false);
+                        timer3.start();
+                    }
+                });
+
+                timer2.setRepeats(false);
+                timer2.start();
+            }
+        });
+
+        timer.setRepeats(false);
+        timer.start();
+
+    }
+
+    public void showHappyEndScene() {
+        game.ui.lifePanel.setVisible(false);
+        game.ui.inventoryPanel.setVisible(false);
+        game.ui.bgPanel[0].setVisible(false);
+        game.ui.bgPanel[1].setVisible(false);
+        game.ui.bgPanel[2].setVisible(false);
+        game.ui.openTextBox();
+
+        Timer timer = new Timer(3000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                game.ui.closeTextBox();
+                game.music.stop();
+                game.ui.bgPanel[9].setVisible(true);
+                game.ui.bgPanel[13].setVisible(false);
+                game.ui.bgPanel[11].setVisible(false);
+                game.ui.bgPanel[12].setVisible(false);
+                Timer timer2 = new Timer(4000, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        game.ui.bgPanel[9].setVisible(false);
+                        game.ui.bgPanel[13].setVisible(true);
+                        game.ui.bgPanel[11].setVisible(false);
+                        game.ui.bgPanel[12].setVisible(false);
+
+                        Timer timer3 = new Timer(4000, new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                game.ui.bgPanel[9].setVisible(false);
+                                game.ui.bgPanel[13].setVisible(false);
+                                game.ui.bgPanel[11].setVisible(true);
+                                game.ui.bgPanel[12].setVisible(false);
+
+                                Timer timer4 = new Timer(4000, new ActionListener() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent e) {
+                                        game.ui.bgPanel[9].setVisible(false);
+                                        game.ui.bgPanel[13].setVisible(false);
                                         game.ui.bgPanel[11].setVisible(false);
                                         game.ui.bgPanel[12].setVisible(true);
 
