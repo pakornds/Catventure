@@ -820,7 +820,7 @@ public class UI {
 
 // Car
         createObject(2, 1168, 233, 500, 320, "resources\\HD_transparent_picture.png",
-                "Look", "Get im", "Cancel", "lookMovedCar", "moveMovedCar", "cancel");
+                "Look", "Get in", "Cancel", "lookCar", "moveMovedCar", "cancel");
         createObject(2, 1168, 233, 500, 320, "resources\\HD_transparent_picture.png",
                 "Look", "Get in", "Cancel", "lookCar", "moveCar", "cancel");
         createObject(2, 1168, 233, 500, 320, "resources\\Neighborhood\\Car.png");
