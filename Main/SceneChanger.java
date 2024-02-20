@@ -1,7 +1,6 @@
 package Main;
 
 import javax.swing.*;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -44,8 +43,6 @@ public class SceneChanger {
     public void showTitleScreen() {
         game.ui.window.dispose();
         game.stopMusic();
-
-        game = null; // Dereference the game object
 
         System.gc(); // Suggest JVM to run garbage collector
 
